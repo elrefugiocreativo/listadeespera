@@ -7,79 +7,156 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Nunito:wght@700;800&family=Alfa+Slab+One&family=Abril+Fatface&family=Courier+Prime:wght@700&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Nunito:wght@700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
   :root{
-    --crema:#EDE7DA; --crema-claro:#F6F2EA; --lila:#98869C; --lila-osc:#76657A; --dorado:#DFC897;
-    --tinta:#2B2A27; --suave:#6E6A63; --linea:#D9D0C0;
+    --crema:#EDE7DA; --crema-claro:#F6F2EA; --papel-puerta:#F4EFE6;
+    --lila:#9B8A9E; --lila-osc:#76657A;
+    --tinta:#1E1D1B; --suave:#4A4742; --linea:#D9D0C0;
     --texto:"Arial Rounded MT Bold","Arial Rounded MT","Nunito",system-ui,sans-serif;
+    --black:"Arial Rounded MT Bold","Nunito",system-ui,sans-serif;
     --titulo:"Lora",Georgia,serif;
   }
   *{box-sizing:border-box;margin:0;padding:0;min-width:0}
-  body{background:var(--crema-claro);color:var(--tinta);font:15px/1.65 var(--texto);-webkit-font-smoothing:antialiased;overflow-x:clip}
+  body{background:var(--crema-claro);color:var(--tinta);font:400 15px/1.65 var(--texto);-webkit-font-smoothing:antialiased;overflow-x:clip}
   img{max-width:100%;display:block}
   a{color:inherit}
   h1,h2{font-family:var(--titulo);font-weight:400;line-height:1.12;text-wrap:balance}
   .wrap{max-width:560px;margin:0 auto;padding:0 24px}
   .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--suave)}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 30px;border-radius:40px;border:0;
-       font:15px var(--texto);text-decoration:none;cursor:pointer;transition:transform .15s,background .15s}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 32px;border-radius:40px;border:0;
+       font:900 15px var(--black);text-decoration:none;cursor:pointer;transition:transform .15s,background .15s,box-shadow .15s}
   .btn:hover{transform:translateY(-2px)}
-  .btn-lila{background:var(--lila-osc);color:var(--crema-claro)}
+  .btn-lila{background:var(--lila-osc);color:#fff;box-shadow:0 12px 24px -12px rgba(45,25,55,.55)}
   .btn-borde{background:transparent;border:1.5px solid currentColor}
-  .textura{position:relative;isolation:isolate}
-  .textura::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.35;mix-blend-mode:multiply;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .3 0 0 0 0 .38 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-  .papel{position:relative;isolation:isolate}
-  .papel::before,.papel::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none}
-  .papel::before{opacity:.55;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .25 0 0 0 0 .33 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-  .papel::after{opacity:.5;mix-blend-mode:soft-light;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .02' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 -.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E")}
+  /* ---------- 1. entrada con fondo morado texturizado ---------- */
+  .entrada{
+    position:relative;isolation:isolate;
+    background-color:var(--lila);
+    color:var(--tinta);
+    text-align:center;
+    padding:60px 18px 86px;
+  }
+  .entrada::before{
+    content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+    opacity:.45;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .26 0 0 0 0 .34 0 0 0 .65 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .entrada::after{
+    content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+    opacity:.35;mix-blend-mode:soft-light;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.018 .035' numOctaves='3' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .85 -.15'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+  }
 
-  /* ---------- 1. bienvenida ---------- */
-  .entrada{background:var(--lila);color:#fff;text-align:center;padding:56px 16px 120px;min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
-  .entrada .logo{width:84px;margin-bottom:26px;mix-blend-mode:multiply}
-  .entrada .eyebrow{color:rgba(255,255,255,.85)}
-  .entrada h1{font-size:clamp(38px,8vw,60px);margin:12px 0 14px}
-  .entrada .bajada{font-family:var(--texto);font-size:17px;opacity:.95;max-width:420px}
+  .entrada .logo{width:80px;margin:0 auto 24px;mix-blend-mode:multiply}
+  .entrada .eyebrow{color:var(--tinta);font-weight:900;opacity:.85;margin-bottom:10px}
+  .entrada h1{color:var(--tinta);font-size:clamp(40px,8vw,58px);margin-bottom:14px}
+  .entrada .felicidades-sub{font-family:var(--black);font-weight:900;font-size:clamp(16px,3.6vw,19px);color:var(--tinta);max-width:440px;margin:0 auto}
+  .entrada .nos-vemos{font-family:var(--black);font-weight:900;font-size:clamp(15px,3.4vw,18px);color:var(--tinta);margin-top:26px}
 
-  /* ---------- llave ---------- */
-  .paso{margin-top:46px;font-family:var(--titulo);font-style:italic;font-size:clamp(22px,4.4vw,28px)}
-  .collage{position:relative;width:min(380px,100%);aspect-ratio:4/5;margin:18px auto 0;border-radius:6px;overflow:hidden;
-           background:#F1EBDD;box-shadow:0 30px 60px -26px rgba(40,20,50,.75);animation:llega 1.1s cubic-bezier(.2,.8,.2,1) both .2s;color:var(--tinta)}
-  .collage::before{content:"";position:absolute;inset:0;opacity:.6;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .4 0 0 0 0 .32 0 0 0 .45 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-  .collage>*{position:absolute}
-  .nombre-col{left:5%;right:5%;top:6%;display:flex;flex-wrap:nowrap;justify-content:center;gap:4px 2px;line-height:1}
-  .letra{display:inline-flex;align-items:center;justify-content:center;padding:.08em .12em .04em;box-shadow:1px 2px 3px rgba(0,0,0,.25)}
-  .llave-col{left:50%;top:37%;width:56%;transform:translate(-50%,-50%) rotate(-14deg);filter:drop-shadow(2px 4px 4px rgba(0,0,0,.3))}
-  .llave-col svg{width:100%;display:block;animation:gira 1.4s ease-in-out 1.2s both;transform-origin:20% 50%}
-  .valiente{left:50%;top:61%;width:54%;transform:translate(-50%,-50%) rotate(-3deg)}
-  .etiqueta{left:10%;right:10%;bottom:5%;background:#FBF8F1;padding:8px 12px 7px;text-align:center;box-shadow:1px 3px 5px rgba(0,0,0,.2);transform:rotate(1.2deg)}
-  .etiqueta b{display:block;font-family:"Courier Prime",monospace;font-size:12px;letter-spacing:.04em}
-  .etiqueta span{display:block;line-height:1.35;font-family:"Courier Prime",monospace;font-size:10.5px;color:#55524C}
-  @keyframes llega{from{opacity:0;transform:translateY(40px) rotate(-5deg) scale(.94)}to{opacity:1;transform:none}}
-  @keyframes gira{0%{transform:rotate(0)}40%{transform:rotate(-16deg)}70%{transform:rotate(5deg)}100%{transform:rotate(0)}}
+  /* ---------- cuenta regresiva imponente ---------- */
+  .cuenta{
+    display:grid;grid-template-columns:repeat(4,minmax(68px,104px));
+    justify-content:center;gap:12px;margin:18px auto 8px;max-width:460px;
+  }
+  .cuenta div{
+    background:rgba(246,242,234,.92);
+    border:2px solid var(--tinta);
+    border-radius:20px;
+    padding:14px 6px 12px;
+    box-shadow:0 12px 26px -14px rgba(25,18,30,.65);
+  }
+  .cuenta b{
+    display:block;font-family:var(--titulo);font-weight:500;
+    font-size:clamp(34px,7vw,48px);line-height:1;color:var(--tinta);
+    font-variant-numeric:tabular-nums;
+  }
+  .cuenta span{
+    display:block;margin-top:6px;
+    font-family:var(--black);font-weight:900;font-size:11px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--tinta);opacity:.8;
+  }
+  .hora-nota{font-size:12.5px;color:var(--tinta);opacity:.85;min-height:1.2em;margin-top:6px}
 
-  /* ---------- cuenta regresiva ---------- */
-  .hora-nota{font-size:12.5px;opacity:.85;margin-top:12px;min-height:1em}
-  .cuenta{display:flex;justify-content:center;gap:10px;margin:34px 0 6px}
-  .cuenta div{background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.35);border-radius:16px;width:74px;padding:10px 0 8px}
-  .cuenta b{display:block;font-family:var(--titulo);font-weight:400;font-size:30px;line-height:1.1;font-variant-numeric:tabular-nums}
-  .cuenta span{font-size:11px;letter-spacing:.08em;opacity:.85}
-  .acciones{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:26px}
-  .acciones .btn-cal{background:var(--crema-claro);color:var(--tinta)}
-  .acciones .btn-borde{color:#fff}
-  .nota{font-size:12.5px;opacity:.85;margin-top:14px}
+  /* ---------- tarjeta de la puerta ---------- */
+  .paso{
+    margin-top:42px;
+    font-family:var(--black);font-weight:900;
+    font-size:clamp(16px,3.5vw,19px);color:var(--tinta);
+  }
+  .collage{
+    position:relative;
+    width:min(360px,100%);
+    aspect-ratio:4/5.3;
+    margin:18px auto 0;
+    padding:26px 24px 22px;
+    border-radius:10px;
+    background:var(--papel-puerta);
+    color:var(--tinta);
+    box-shadow:0 28px 56px -24px rgba(30,16,40,.75);
+    display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+    text-align:center;
+    animation:llega .95s cubic-bezier(.2,.8,.2,1) both .15s;
+  }
+  .collage::before{
+    content:"";position:absolute;inset:0;border-radius:10px;pointer-events:none;
+    opacity:.45;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .3 0 0 0 0 .25 0 0 0 .45 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .nombre-puerta{
+    position:relative;z-index:1;
+    font-family:var(--black);font-weight:900;
+    font-size:13px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--tinta);
+    padding:5px 14px;border-radius:999px;
+    background:rgba(155,138,158,.18);
+    max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  .puerta-svg{
+    position:relative;z-index:1;
+    width:min(148px,44%);margin:6px auto 2px;
+  }
+  .puerta-svg svg{width:100%;height:auto;display:block}
+  .frase-valiente{
+    position:relative;z-index:1;
+    font-family:"Permanent Marker",cursive;
+    font-size:clamp(21px,5.2vw,27px);
+    line-height:1.12;letter-spacing:.02em;text-transform:uppercase;
+    color:#171614;
+    transform:rotate(-2.5deg);
+    margin:4px 0;
+  }
+  .frase-valiente .subrayado{
+    display:block;width:72%;height:4px;background:#171614;
+    border-radius:4px;margin:7px auto 0;transform:rotate(1deg);
+  }
+  .sello-refugio{
+    position:relative;z-index:1;
+    font-family:"Permanent Marker",cursive;
+    font-size:14px;letter-spacing:.12em;text-transform:uppercase;
+    color:#171614;margin-top:4px;
+  }
+  @keyframes llega{from{opacity:0;transform:translateY(28px) scale(.97)}to{opacity:1;transform:none}}
 
-  /* ---------- 2. mensaje ---------- */
-  .mensaje{padding:84px 0 70px;text-align:center}
-  .mensaje h2{font-size:clamp(28px,5vw,38px);margin-bottom:18px}
-  .mensaje p{margin-bottom:14px}
-  .aviso{display:flex;gap:14px;align-items:flex-start;text-align:left;background:#fff;border:1.5px dashed var(--linea);border-radius:20px;padding:18px 20px;margin:28px 0 0}
-  .aviso .ic{flex:none;width:42px;height:42px;border-radius:50%;background:#EEE8F0;display:flex;align-items:center;justify-content:center;font-size:19px}
-  .aviso p{margin:0;font-size:14px}
+  /* ---------- bloque calendario llamativo ---------- */
+  .calendario-box{
+    margin:36px auto 0;max-width:440px;
+    background:rgba(246,242,234,.92);
+    border:2px solid var(--tinta);
+    border-radius:24px;padding:24px 20px;
+    box-shadow:0 16px 32px -18px rgba(25,18,30,.6);
+  }
+  .calendario-box .titulo-cal{
+    font-family:var(--black);font-weight:900;
+    font-size:clamp(20px,4.8vw,25px);line-height:1.22;
+    color:var(--tinta);margin-bottom:18px;
+  }
+  .acciones{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .acciones .btn-cal{background:var(--tinta);color:var(--crema-claro)}
+  .acciones .btn-borde{color:var(--tinta);border-color:var(--tinta)}
 
-  /* ---------- 3. tour ---------- */
+  /* ---------- secciones inferiores ---------- */
   .tour{background:var(--crema);padding:84px 0;text-align:center}
   .tour h2{font-size:clamp(28px,5vw,38px);margin:10px 0 12px}
   .tour .wide{max-width:820px;margin:0 auto;padding:0 24px}
@@ -87,9 +164,12 @@
   .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   .credito{font-size:13px;color:var(--suave);margin-top:14px}
 
-  /* ---------- 4. mientras tanto ---------- */
-  .mientras{padding:84px 0 40px;text-align:center}
-  .mientras h2{font-size:clamp(26px,5vw,34px);margin-bottom:26px}
+  .apertura-info{padding:84px 0 36px;text-align:center}
+  .apertura-info h2{font-size:clamp(28px,5vw,38px);margin:10px 0 14px}
+  .apertura-info p{margin-bottom:10px}
+
+  .mientras{padding:44px 0 28px;text-align:center}
+  .mientras h2{font-size:clamp(26px,5vw,34px);margin-bottom:24px}
   .tarjeta{display:flex;gap:16px;align-items:center;text-align:left;background:#fff;border-radius:22px;padding:18px 20px;margin-bottom:14px;text-decoration:none;
            box-shadow:0 10px 24px -18px rgba(50,30,60,.5);transition:transform .2s}
   .tarjeta:hover{transform:translateY(-2px)}
@@ -98,7 +178,12 @@
   .tarjeta span{font-size:13px;color:var(--suave)}
   .tarjeta .fl{margin-left:auto;font-size:20px;color:var(--lila-osc)}
 
-  .firma{padding:40px 0 60px;text-align:center}
+  .alarma-wrap{padding:12px 0 40px}
+  .aviso{display:flex;gap:14px;align-items:flex-start;text-align:left;background:#fff;border:1.5px dashed var(--linea);border-radius:20px;padding:18px 20px}
+  .aviso .ic{flex:none;width:42px;height:42px;border-radius:50%;background:#EEE8F0;display:flex;align-items:center;justify-content:center;font-size:19px}
+  .aviso p{margin:0;font-size:14px}
+
+  .firma{padding:24px 0 64px;text-align:center}
   .firma p{font-family:var(--titulo);font-size:22px;font-style:italic}
   .firma img{width:160px;margin:14px auto 0}
 
@@ -107,65 +192,54 @@
 </head>
 <body>
 
-<!-- ============ 1. BIENVENIDA + LLAVE ============ -->
-<section class="entrada papel">
+<!-- ============ 1. BIENVENIDA + CONTADOR + PUERTA + CALENDARIO ============ -->
+<section class="entrada">
   <img class="logo" src="https://waitlistseptiembre.carrd.co/assets/images/image07.png" alt="El Refugio">
   <p class="eyebrow">Confirmado</p>
-  <h1>Estás en la lista</h1>
-  <p class="bajada">Tomaste la decisión, y eso ya dice mucho de ti 🤍</p>
+  <h1>Felicidades!</h1>
+  <p class="felicidades-sub">Tomaste la decisión, y eso ya dice mucho de ti 🤍</p>
 
-  <p class="paso">Estás a un paso de entrar:</p>
-  <div class="collage" id="collage">
-    <div class="nombre-col" id="nombre-col" aria-label="Tu nombre"></div>
-    <div class="llave-col" aria-hidden="true">
-      <svg viewBox="0 0 250 100">
-        <g stroke-linecap="round" stroke-linejoin="round">
-          <g stroke="#FBF8F1" stroke-width="14" fill="#FBF8F1">
-            <rect x="72" y="42" width="152" height="16" rx="4"/><path d="M188 58 v16 h10 v-10 h8 v14 h12 V58"/><circle cx="46" cy="50" r="32"/>
-          </g>
-          <g stroke="#2B2A27" stroke-width="3.4">
-            <rect x="72" y="42" width="152" height="16" rx="4" fill="#DFC897"/>
-            <path d="M188 58 v16 h10 v-10 h8 v14 h12 V58" fill="#DFC897"/>
-            <circle cx="46" cy="50" r="32" fill="#DFC897"/>
-            <circle cx="46" cy="50" r="12" fill="#F1EBDD"/>
-            <path d="M100 42 v16 M112 42 v16" stroke-width="2.2" fill="none"/>
-          </g>
-        </g>
-      </svg>
-    </div>
-    <img class="valiente" src="media/valiente.png" alt="Nadie se arrepiente de ser valiente">
-    <div class="etiqueta" id="etiqueta"><b>LLAVE DE EL REFUGIO</b><span>1 de febrero · 11:00 am</span></div>
-  </div>
-  <p class="hora-nota"><span id="hora-local"></span></p>
-
+  <p class="nos-vemos">Estás en la lista · Tomaste la decisión, y eso ya dice mucho de ti, nos vemos en:</p>
   <div class="cuenta" id="cuenta" aria-label="Tiempo para la apertura">
     <div><b id="c-d">--</b><span>días</span></div>
     <div><b id="c-h">--</b><span>horas</span></div>
     <div><b id="c-m">--</b><span>min</span></div>
     <div><b id="c-s">--</b><span>seg</span></div>
   </div>
+  <p class="hora-nota"><span id="hora-local"></span></p>
 
-  <div class="acciones">
-    <a class="btn btn-cal" id="gcal" target="_blank" rel="noopener">📅 Guardar en Google Calendar</a>
-    <button class="btn btn-borde" id="descargar" type="button">Descargar mi llave</button>
+  <p class="paso">Estás a un paso de entrar:</p>
+  <div class="collage" id="collage">
+    <div class="nombre-puerta" id="nombre-puerta">TU NOMBRE</div>
+    <div class="puerta-svg" aria-hidden="true">
+      <svg viewBox="0 0 180 210" fill="none">
+        <rect x="42" y="16" width="96" height="178" rx="4" stroke="#171614" stroke-width="5.5" fill="#FBF8F2"/>
+        <path d="M42 16 L96 28 L96 194 L42 194 Z" fill="#F4EFE6" stroke="#171614" stroke-width="5" stroke-linejoin="round"/>
+        <rect x="53" y="34" width="14" height="56" rx="2" stroke="#171614" stroke-width="3.5" fill="none"/>
+        <rect x="73" y="38" width="14" height="52" rx="2" stroke="#171614" stroke-width="3.5" fill="none"/>
+        <rect x="53" y="102" width="14" height="72" rx="2" stroke="#171614" stroke-width="3.5" fill="none"/>
+        <rect x="73" y="102" width="14" height="72" rx="2" stroke="#171614" stroke-width="3.5" fill="none"/>
+        <rect x="96" y="28" width="42" height="166" fill="#171614"/>
+        <circle cx="88" cy="112" r="4.5" fill="#171614"/>
+      </svg>
+    </div>
+    <div class="frase-valiente">
+      Nadie se<br>arrepiente<br>de ser<br>valiente
+      <span class="subrayado"></span>
+    </div>
+    <div class="sello-refugio">EL REFUGIO.</div>
   </div>
-  <p class="nota">Guarda la fecha y pon una alarma: los cupos son solo para <b>50 creativos</b>.</p>
-</section>
 
-<!-- ============ 2. MENSAJE ============ -->
-<section class="mensaje">
-  <div class="wrap">
-    <p class="eyebrow">El 1 de febrero</p>
-    <h2>Se abren las puertas de El Refugio solo para 50 personas</h2>
-    <p>Y por estar aquí, tendrás acceso antes que nadie.</p>
-    <div class="aviso">
-      <span class="ic">🔑</span>
-      <p>Ese día, a las <b>11:00 am</b>, te llega a tu correo el acceso para entrar. Revisa también promociones o spam para que no se te pierda.</p>
+  <div class="calendario-box">
+    <p class="titulo-cal">¡Guarda la fecha en tu calendario! Los cupos son solo para 50 creativos.</p>
+    <div class="acciones">
+      <a class="btn btn-cal" id="gcal" target="_blank" rel="noopener">📅 Guardar en Google Calendar</a>
+      <button class="btn btn-borde" id="descargar" type="button">Descargar mi puerta</button>
     </div>
   </div>
 </section>
 
-<!-- ============ 3. TOUR ============ -->
+<!-- ============ 2. TOUR POR EL REFUGIO ============ -->
 <section class="tour">
   <div class="wide">
     <p class="eyebrow">Mientras esperas, pasa adelante</p>
@@ -176,7 +250,16 @@
   </div>
 </section>
 
-<!-- ============ 4. MIENTRAS TANTO ============ -->
+<!-- ============ 3. APERTURA 1 DE FEBRERO ============ -->
+<section class="apertura-info">
+  <div class="wrap">
+    <p class="eyebrow">El 1 de febrero</p>
+    <h2>Se abren las puertas de El Refugio solo para 50 personas</h2>
+    <p>Y por estar aquí, tendrás acceso antes que nadie.</p>
+  </div>
+</section>
+
+<!-- ============ 4. MIENTRAS TANTO + PODCAST + ALARMA ============ -->
 <section class="mientras">
   <div class="wrap">
     <h2>Mientras tanto, mantente cerca</h2>
@@ -190,6 +273,18 @@
       <span><b>Comparte tu llave</b><span>Descárgala, súbela a tus historias y etiquétame. Quizás alguien más necesita este refugio.</span></span>
       <span class="fl">→</span>
     </a>
+    <a class="tarjeta" href="https://www.youtube.com/@elrefugiocreativo" target="_blank" rel="noopener">
+      <span class="ic">🎙</span>
+      <span><b>Escucha el podcast de El Refugio!</b><span>https://www.youtube.com/@elrefugiocreativo</span></span>
+      <span class="fl">→</span>
+    </a>
+
+    <div class="alarma-wrap">
+      <div class="aviso">
+        <span class="ic">🔑</span>
+        <p>Pon una alarma el 1 de febrero, a las <b>11:00 am</b>, te llega a tu correo el acceso para entrar. Revisa también promociones o spam para que no se te pierda.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -205,39 +300,9 @@
   const APERTURA = new Date("2027-02-01T11:00:00-04:00"); // 11:00 am Caracas
   const params = new URLSearchParams(location.search);
   const nombreCompleto = (params.get("n") || "").trim().slice(0, 40);
-  const nombre = nombreCompleto.split(/\s+/)[0] || "";
+  const nombre = (nombreCompleto.split(/\s+/)[0] || "CREATIVO").toUpperCase();
 
-  // nombre en letras recortadas (collage) — estable para cada nombre
-  const paleta = [["#C8402E","#F6EFE2"],["#F6EFE2","#2B2A27"],["#2B2A27","#F6EFE2"],["#DFC897","#2B2A27"],["#98869C","#fff"],
-                  ["#8CA0B1","#2B2A27"],["#919F8E","#F6EFE2"],["#E9E2D0","#76657A"],["#fff","#C8402E"],["#D9C9A8","#2B2A27"]];
-  const fuentes = ["'Alfa Slab One',serif","'Abril Fatface',serif","Lora,serif","'Courier Prime',monospace","'Rubik Mono One',sans-serif","Nunito,sans-serif"];
-  let semilla = [...(nombre || "tú")].reduce((a, ch) => (a * 31 + ch.charCodeAt(0)) >>> 0, 7);
-  const rnd = () => (semilla = (semilla * 1664525 + 1013904223) >>> 0) / 4294967296;
-  const palabra = (nombre || "tú").toUpperCase();
-  const base = palabra.length <= 4 ? 64 : palabra.length <= 7 ? 52 : palabra.length <= 10 ? 40 : 30;
-  const caja = document.getElementById("nombre-col");
-  [...palabra].forEach(ch => {
-    const el = document.createElement("span");
-    el.className = "letra";
-    el.textContent = ch;
-    const [bg, fg] = paleta[Math.floor(rnd() * paleta.length)];
-    const f = fuentes[Math.floor(rnd() * fuentes.length)];
-    const tam = base * (0.85 + rnd() * 0.3);
-    const minus = rnd() < 0.35 && !/Rubik/.test(f);
-    if (minus) el.textContent = ch.toLowerCase();
-    Object.assign(el.style, { background: bg, color: fg, fontFamily: f, fontSize: tam + "px",
-      transform: `rotate(${(rnd() * 14 - 7).toFixed(1)}deg) translateY(${(rnd() * 8 - 4).toFixed(0)}px)`,
-      clipPath: `polygon(${(rnd()*6).toFixed(0)}% ${(rnd()*6).toFixed(0)}%, ${(94+rnd()*6).toFixed(0)}% 0%, 100% ${(95+rnd()*5).toFixed(0)}%, ${(rnd()*5).toFixed(0)}% 100%)` });
-    caja.appendChild(el);
-  });
-  // que el nombre quepa siempre en una línea
-  const ajustar = () => {
-    const letras = [...caja.children];
-    for (let i = 0; i < 12 && caja.scrollWidth > caja.clientWidth + 1; i++)
-      letras.forEach(l => l.style.fontSize = (parseFloat(l.style.fontSize) * 0.92) + "px");
-  };
-  ajustar(); document.fonts.ready.then(ajustar);
-  document.getElementById("etiqueta").querySelector("b").textContent = "LLAVE DE EL REFUGIO · PARA " + (nombre ? nombre.toUpperCase() : "TI");
+  document.getElementById("nombre-puerta").textContent = nombre;
 
   // hora local si es distinta a Caracas
   try {
@@ -274,16 +339,16 @@
     try {
       await document.fonts.ready;
       const nodo = document.getElementById("collage");
-      const blob = await htmlToImage.toBlob(nodo, { pixelRatio: 3, cacheBust: true, style: { animation: "none", transform: "none", margin: "0", borderRadius: "0" } });
-      const archivo = new File([blob], "mi-llave-el-refugio.png", { type: "image/png" });
+      const blob = await htmlToImage.toBlob(nodo, { pixelRatio: 3, cacheBust: true, style: { animation: "none", transform: "none", margin: "0" } });
+      const archivo = new File([blob], "mi-puerta-el-refugio.png", { type: "image/png" });
       if (navigator.canShare && navigator.canShare({ files: [archivo] })) {
-        try { await navigator.share({ files: [archivo], title: "Mi llave de El Refugio" }); return; } catch (e) { if (e.name === "AbortError") return; }
+        try { await navigator.share({ files: [archivo], title: "Mi puerta en El Refugio" }); return; } catch (e) { if (e.name === "AbortError") return; }
       }
       const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob); a.download = "mi-llave-el-refugio.png"; a.click();
+      a.href = URL.createObjectURL(blob); a.download = "mi-puerta-el-refugio.png"; a.click();
       setTimeout(() => URL.revokeObjectURL(a.href), 3000);
     } catch (e) {
-      alert("No pudimos generar la imagen. Puedes hacerle captura de pantalla a tu llave 🗝");
+      alert("No pudimos generar la imagen. Puedes hacerle captura de pantalla a tu puerta 🚪");
     }
   };
   document.getElementById("descargar").addEventListener("click", descargar);
