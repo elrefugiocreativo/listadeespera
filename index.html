@@ -61,14 +61,19 @@
   .chips span{display:inline-block;padding:9px 16px;border-radius:22px;border:1.5px solid var(--linea);background:#fff;font-size:13px;transition:all .15s}
   .chips input:checked+span{background:var(--lila-osc);border-color:var(--lila-osc);color:#fff}
   .chips input:focus-visible+span{outline:2px solid var(--lila-osc);outline-offset:2px}
-  .extra{background:#E7E0EA;border-radius:24px;margin:26px 0 8px;padding:0 22px;transition:background .2s}
-  .extra summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;min-height:68px;padding:12px 30px 12px 0;position:relative}
+  .extra{background:#fff;border:1.5px dashed #CFC3D2;border-radius:22px;margin:26px 0 8px;transition:border-color .2s,box-shadow .2s}
+  .extra:hover{border-color:var(--lila)}
+  .extra[open]{border-style:solid;border-color:#E2DAE4;box-shadow:0 10px 24px -16px rgba(50,30,60,.45)}
+  .extra summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:14px;padding:14px 16px}
   .extra summary::-webkit-details-marker{display:none}
-  .extra summary span{font-family:var(--titulo);font-size:19px;color:var(--lila-osc)}
-  .extra summary small{font-size:12px;color:var(--suave)}
-  .extra summary::after{content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:26px;color:var(--lila-osc);transition:transform .2s}
-  .extra[open] summary::after{transform:translateY(-50%) rotate(45deg)}
-  .extra-cuerpo{padding:4px 0 10px}
+  .extra .em{flex:none;width:44px;height:44px;border-radius:50%;background:#EEE8F0;display:flex;align-items:center;justify-content:center;font-size:19px}
+  .extra .tt{flex:1;display:flex;flex-direction:column;line-height:1.25}
+  .extra .t{font-family:var(--titulo);font-size:18px;color:var(--tinta)}
+  .extra .st{font-size:12.5px;color:var(--suave);margin-top:3px}
+  .extra .chev{flex:none;width:32px;height:32px;border-radius:50%;border:1.5px solid var(--linea);position:relative;transition:transform .25s,background .2s}
+  .extra .chev::before{content:"";position:absolute;left:50%;top:45%;width:7px;height:7px;border-right:2px solid var(--lila-osc);border-bottom:2px solid var(--lila-osc);transform:translate(-50%,-50%) rotate(45deg)}
+  .extra[open] .chev{transform:rotate(180deg);background:#EEE8F0}
+  .extra-cuerpo{margin:0 18px;padding:18px 0 8px;border-top:1.5px dashed var(--linea)}
   form.eo .btn{width:100%;margin-top:10px}
   .hp{position:absolute;left:-9999px}
   .msg{max-width:440px;margin:16px auto 0;font-size:14px;min-height:1em}
@@ -182,7 +187,7 @@
         <input id="f-ciudad" type="text" name="ciudad" placeholder="Ej: Caracas, Venezuela" required></div>
 
       <details class="extra" id="extra">
-        <summary><span>Cuéntanos un poquito más sobre ti</span><small>4 preguntas cortitas</small></summary>
+        <summary><span class="em">✨</span><span class="tt"><span class="t">Cuéntanos un poquito más sobre ti</span><span class="st">Para conocerte antes de que entres</span></span><span class="chev" aria-hidden="true"></span></summary>
         <div class="extra-cuerpo">
 
       <div class="campo"><span class="lbl">¿Qué creas? <span class="opc">(marca todo lo que aplique)</span></span>
