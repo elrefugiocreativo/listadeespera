@@ -90,20 +90,30 @@
   @media(max-width:600px){.dos{grid-template-columns:1fr}}
 
   /* ---------- desplegables ---------- */
-  .acc{max-width:520px;margin:34px auto 0;text-align:left;display:flex;flex-direction:column;gap:12px}
-  .acc details{background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.35);border-radius:20px;padding:0 22px;transition:background .2s}
-  .acc details[open]{background:rgba(255,255,255,.22)}
-  .acc summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:14px;min-height:64px}
+  .textura{position:relative;isolation:isolate}
+  .textura::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.35;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .3 0 0 0 0 .38 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .marco{border:1.5px dashed rgba(255,255,255,.55);border-radius:30px;padding:52px 26px 46px;max-width:620px}
+  @media(max-width:600px){.textura{padding:40px 14px}.marco{padding:40px 14px 36px}}
+  .acc{max-width:520px;margin:34px auto 0;text-align:left;display:flex;flex-direction:column;gap:14px}
+  .acc details{background:var(--crema-claro);color:var(--tinta);border-radius:22px;box-shadow:0 10px 24px -14px rgba(50,30,60,.55),0 1px 0 rgba(255,255,255,.6) inset;transition:transform .2s,box-shadow .2s}
+  .acc details:hover{transform:translateY(-2px);box-shadow:0 14px 28px -14px rgba(50,30,60,.6)}
+  .acc details:nth-child(1){transform:rotate(-.6deg)} .acc details:nth-child(2){transform:rotate(.5deg)} .acc details:nth-child(3){transform:rotate(-.4deg)}
+  .acc details[open]{transform:none}
+  .acc summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:14px;min-height:78px;padding:12px 18px}
   .acc summary::-webkit-details-marker{display:none}
-  .acc summary .t{font-family:var(--titulo);font-size:21px;flex:1}
-  .acc summary .em{font-size:22px}
-  .acc summary::after{content:"+";font-size:24px;line-height:1;transition:transform .2s}
-  .acc details[open] summary::after{transform:rotate(45deg)}
-  .acc .cuerpo{padding:0 0 20px 36px;font-size:14px}
-  .acc .cuerpo ul{list-style:none;margin-bottom:10px}
-  .acc .cuerpo li{padding-left:16px;position:relative;margin-bottom:4px}
-  .acc .cuerpo li::before{content:"·";position:absolute;left:2px;font-size:20px;line-height:1.1}
-  .acc .cuerpo em{opacity:.85}
+  .acc summary .em{flex:none;width:48px;height:48px;border-radius:50%;background:#E7E0EA;display:flex;align-items:center;justify-content:center;font-size:22px}
+  .acc summary .tt{flex:1;display:flex;flex-direction:column;line-height:1.25}
+  .acc summary .t{font-family:var(--titulo);font-size:21px}
+  .acc summary .st{font-size:12.5px;color:var(--suave);margin-top:3px}
+  .acc summary .chev{flex:none;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--linea);position:relative;transition:transform .25s,background .2s}
+  .acc summary .chev::before{content:"";position:absolute;left:50%;top:45%;width:8px;height:8px;border-right:2px solid var(--lila-osc);border-bottom:2px solid var(--lila-osc);transform:translate(-50%,-50%) rotate(45deg)}
+  .acc details[open] .chev{transform:rotate(180deg);background:#E7E0EA}
+  .acc .cuerpo{padding:2px 22px 22px;font-size:14px;border-top:1.5px dashed var(--linea);margin:0 18px;padding-left:0;padding-right:0;padding-top:18px}
+  .acc .cuerpo ul{list-style:none;margin-bottom:12px}
+  .acc .cuerpo li{padding-left:18px;position:relative;margin-bottom:6px}
+  .acc .cuerpo li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--lila)}
+  .acc .cuerpo em{color:var(--lila-osc);font-family:var(--titulo);font-size:15.5px}
 
   /* ---------- comunidad ---------- */
   .frases p{font-family:var(--titulo);font-size:19px;margin-bottom:10px}
@@ -116,7 +126,7 @@
   .flechas button:hover{background:var(--lila-osc);color:#fff}
   .mapa{max-width:420px;margin:26px auto 0;padding:0 24px}
   .mapa video{width:100%;aspect-ratio:4/5;border-radius:18px;display:block;background:var(--lila)}
-  .acc .media{width:100%;max-width:300px;border-radius:14px;margin:0 0 16px;display:block}
+  .acc .media{width:100%;max-width:300px;border-radius:14px;margin:0 auto 16px;display:block}
   .acc video.media{aspect-ratio:4/5;background:#A9B6C1}
   .acc .media.ancha{max-width:100%}
   .collage{width:100%;max-width:360px;border-radius:18px;margin:34px auto 0}
@@ -210,21 +220,21 @@
       </details>
 
       <input class="hp" type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button class="btn btn-lila" type="submit">Quiero estar dentro</button>
+      <button class="btn btn-lila" type="submit">Unirme a la lista de espera</button>
     </form>
     <p class="msg" id="form-msg" role="status" aria-live="polite"></p>
   </div>
 </section>
 
 <!-- ============ ¿CÓMO FUNCIONA? ============ -->
-<section class="bg-lila">
-  <div class="wrap">
+<section class="bg-lila textura">
+  <div class="wrap marco">
     <h2>¿Cómo funciona?</h2>
     <p class="eyebrow">Cuando entras accedes a tres espacios</p>
 
     <div class="acc">
       <details>
-        <summary><span class="em">✍🏻</span><span class="t">La biblioteca</span></summary>
+        <summary><span class="em">✍🏻</span><span class="tt"><span class="t">La biblioteca</span><span class="st">Clases grabadas para avanzar a tu ritmo</span></span><span class="chev" aria-hidden="true"></span></summary>
         <div class="cuerpo">
           <video class="media" src="media/clases.mp4" poster="media/clases-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Algunas clases de la biblioteca"></video>
           <ul>
@@ -236,7 +246,7 @@
         </div>
       </details>
       <details>
-        <summary><span class="em">☕</span><span class="t">Los cafecitos creativos</span></summary>
+        <summary><span class="em">☕</span><span class="tt"><span class="t">Los cafecitos creativos</span><span class="st">Nuestro encuentro en vivo cada viernes</span></span><span class="chev" aria-hidden="true"></span></summary>
         <div class="cuerpo">
           <img class="media ancha" src="media/cafecito.jpg" alt="Un cafecito creativo en vivo con miembros de El Refugio" loading="lazy">
           <ul>
@@ -248,7 +258,7 @@
         </div>
       </details>
       <details>
-        <summary><span class="em">🫂</span><span class="t">La comunidad</span></summary>
+        <summary><span class="em">🫂</span><span class="tt"><span class="t">La comunidad</span><span class="st">Tu gente, todos los días, en WhatsApp</span></span><span class="chev" aria-hidden="true"></span></summary>
         <div class="cuerpo">
           <ul>
             <li>Espacio en WhatsApp con creativos de +35 ciudades del mundo</li>
@@ -324,10 +334,16 @@
   <div class="wrap">
     <h2>Preguntas frecuentes</h2>
     <div class="faq">
+      <details><summary>¿Cómo puedo asegurar mi cupo?</summary><p>El 1 de febrero a las 11:00 am te llega un correo con el acceso. Pon una alarma para entrar apenas abra, porque los cupos se toman por orden de llegada.</p></details>
+      <details><summary>¿Unirme a la lista me compromete a algo?</summary><p>No. Anotarte es gratis y no te obliga a entrar. Solo te aseguras de enterarte primero y de recibir el acceso antes que nadie.</p></details>
+      <details><summary>¿Qué pasa después de que me anoto?</summary><p>Quedas en la lista y te escribimos al correo que dejaste. Revisa también la carpeta de promociones o spam para no perderte el acceso.</p></details>
+      <details><summary>¿Necesito tener un proyecto claro para entrar?</summary><p>No. Puedes llegar con una idea a medias, con muchas ideas a la vez o solo con las ganas de crear. El Refugio es justo el lugar para aterrizarlas.</p></details>
+      <details><summary>¿Tengo que ser profesional o tener experiencia?</summary><p>No. Hay creativos empezando y otros con años de camino: ilustradores, escritores, diseñadores, músicos, fotógrafos y creadores de todo tipo.</p></details>
+      <details><summary>¿Desde dónde puedo participar?</summary><p>Desde cualquier lugar del mundo. Todo pasa en línea y en español, y ya estamos en más de 35 ciudades.</p></details>
       <details><summary>¿Es difícil participar?</summary><p>No. Al entrar recibes un video de 2 min para entender la dinámica de la comunidad, para que tengas todo claro desde el primer momento.</p></details>
-      <details><summary>¿Qué pasa si no estoy en los vivos?</summary><p>Todo queda grabado en la biblioteca para que lo veas a tu ritmo.</p></details>
-      <details><summary>¿Realmente sólo hay <span data-cupos>50</span> cupos?</summary><p>Sí. Cerramos para enfocarnos al 100% en la conexión y en los proyectos de quienes ya están dentro.</p></details>
-      <details><summary>¿Cómo pago desde Venezuela?</summary><p>Si eliges un plan mensual, puedes pagar con tarjeta internacional, Zinli o PayPal. Si eliges un pack de 3 o 6 meses, puedes pagar con Pago Móvil (bolívares), Binance, Zelle, PayPal o Zinli.</p></details>
+      <details><summary>¿Qué pasa si no puedo estar en los vivos?</summary><p>Todo queda grabado en la biblioteca para que lo veas a tu ritmo.</p></details>
+      <details><summary>¿Cuánto cuesta entrar?</summary><p>El 1 de febrero, en el correo de acceso, recibes todas las opciones para entrar y cómo pagar desde tu país.</p></details>
+      <details><summary>¿Realmente sólo hay <span data-cupos>50</span> cupos?</summary><p>Sí. Abrimos pocos cupos para enfocarnos al 100% en la conexión y en los proyectos de quienes ya están dentro.</p></details>
     </div>
   </div>
 </section>
@@ -418,7 +434,7 @@ form.addEventListener("submit", async (ev) => {
     msg.scrollIntoView({ block: "center" });
   } catch (e) {
     error("Algo no funcionó. Inténtalo de nuevo en un momento.");
-    btn.disabled = false; btn.textContent = "Quiero estar dentro";
+    btn.disabled = false; btn.textContent = "Unirme a la lista de espera";
   }
 });
 }
