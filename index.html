@@ -111,4 +111,342 @@
   .acc summary .tt{flex:1;display:flex;flex-direction:column;line-height:1.25}
   .acc summary .t{font-family:var(--titulo);font-size:21px}
   .acc summary .st{font-size:12.5px;color:var(--suave);margin-top:3px}
-  .acc summary .chev{flex:none;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--linea);position:
+  .acc summary .chev{flex:none;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--linea);position:relative;transition:transform .25s,background .2s}
+  .acc summary .chev::before{content:"";position:absolute;left:50%;top:45%;width:8px;height:8px;border-right:2px solid var(--lila-osc);border-bottom:2px solid var(--lila-osc);transform:translate(-50%,-50%) rotate(45deg)}
+  .acc details[open] .chev{transform:rotate(180deg);background:#E7E0EA}
+  .acc .cuerpo{padding:2px 22px 22px;font-size:14px;border-top:1.5px dashed var(--linea);margin:0 18px;padding-left:0;padding-right:0;padding-top:18px}
+  .acc .cuerpo ul{list-style:none;margin-bottom:12px}
+  .acc .cuerpo li{padding-left:18px;position:relative;margin-bottom:6px}
+  .acc .cuerpo li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--lila)}
+  .acc .cuerpo em{color:var(--lila-osc);font-family:var(--titulo);font-size:15.5px}
+
+  /* ---------- comunidad ---------- */
+  .frases p{font-family:var(--titulo);font-size:19px;margin-bottom:10px}
+  .carrusel{max-width:900px;margin:30px auto 0}
+  .testis{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px max(24px,calc(50% - 150px)) 18px;scrollbar-width:none;outline:none}
+  .testis::-webkit-scrollbar{display:none}
+  .testis img{flex:0 0 min(300px,78vw);width:min(300px,78vw);scroll-snap-align:center;transition:transform .25s}
+  .flechas{display:flex;gap:12px;justify-content:center;margin-top:8px}
+  .flechas button{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--lila-osc);background:transparent;color:var(--lila-osc);font-size:18px;cursor:pointer}
+  .flechas button:hover{background:var(--lila-osc);color:#fff}
+  .mapa{max-width:420px;margin:26px auto 0;padding:0 24px}
+  .mapa video{width:100%;aspect-ratio:4/5;border-radius:18px;display:block;background:var(--lila)}
+  .acc .media{width:100%;max-width:300px;border-radius:14px;margin:0 auto 16px;display:block}
+  .acc video.media{aspect-ratio:4/5;background:#A9B6C1}
+  .acc .media.ancha{max-width:100%}
+  .collage{width:100%;max-width:360px;border-radius:18px;margin:34px auto 0}
+
+  .apertura .eyebrow{color:var(--tinta)}
+
+  /* ---------- video ---------- */
+  .video{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;margin-top:34px;background:#000}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .wide{max-width:780px;margin:0 auto;padding:0 24px}
+
+  /* ---------- faq ---------- */
+  .faq{text-align:left;max-width:600px;margin:0 auto}
+  .faq details{border-bottom:1.5px solid var(--linea);padding:16px 4px}
+  .faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";font-size:20px;line-height:1;transition:transform .2s}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq p{margin-top:10px;font-size:14px;color:var(--suave)}
+
+  footer{padding:56px 0 44px;text-align:center}
+  footer .firma{width:160px;margin:0 auto 14px}
+  footer .casita{width:120px;margin:0 auto 26px}
+  .redes{display:flex;gap:18px;justify-content:center;margin-bottom:22px}
+  .redes a{width:42px;height:42px;border-radius:50%;background:var(--lila-osc);color:var(--crema-claro);display:flex;align-items:center;justify-content:center}
+  .redes svg{width:18px;height:18px;fill:currentColor}
+  footer small{font-size:12px;color:var(--suave)}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO + FORMULARIO ============ -->
+<section class="hero" id="waitlist">
+  <div class="wrap">
+    <img class="logo" src="https://waitlistseptiembre.carrd.co/assets/images/image07.png" alt="El Refugio">
+    <p>Por fin, un lugar seguro para materializar tus ideas</p>
+    <h1>Únete a la lista<br>de espera</h1>
+    <p class="eyebrow" style="color:var(--tinta)">Para tener acceso exclusivo a los únicos <span data-cupos>50</span> cupos</p>
+    <p class="sub">que estarán disponibles el <span data-fecha>1 de febrero</span> para entrar al universo de El Refugio</p>
+
+    <form class="eo" id="form-espera" novalidate>
+      <div class="campo"><label for="f-nombre">¿Cómo te llamas?</label>
+        <input id="f-nombre" type="text" name="nombre" placeholder="Nombre y apellido" autocomplete="name" required></div>
+      <div class="campo"><label for="f-email">Tu correo</label>
+        <input id="f-email" type="email" name="email" placeholder="tucorreo@ejemplo.com" autocomplete="email" required></div>
+      <div class="campo"><label for="f-wa">Tu WhatsApp <span class="opc">(opcional)</span></label>
+        <input id="f-wa" type="tel" name="whatsapp" placeholder="+58 412 000 0000" autocomplete="tel"></div>
+      <div class="campo"><label for="f-ig">Tu Instagram</label>
+        <input id="f-ig" type="text" name="instagram" placeholder="@tuusuario" autocomplete="off" required></div>
+      <div class="campo"><label for="f-ciudad">¿Desde qué ciudad y país nos escribes?</label>
+        <input id="f-ciudad" type="text" name="ciudad" placeholder="Ej: Caracas, Venezuela" required></div>
+
+      <details class="extra" id="extra">
+        <summary><span class="em">✨</span><span class="tt"><span class="t">Cuéntanos un poquito más sobre ti</span><span class="st">Para conocerte antes de que entres</span></span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="extra-cuerpo">
+
+      <div class="campo"><span class="lbl">¿Qué creas? <span class="opc">(marca todo lo que aplique)</span></span>
+        <div class="chips" data-grupo="creas">
+          <label><input type="checkbox" name="creas" value="Ilustración"><span>Ilustración</span></label>
+          <label><input type="checkbox" name="creas" value="Diseño"><span>Diseño</span></label>
+          <label><input type="checkbox" name="creas" value="Escritura"><span>Escritura</span></label>
+          <label><input type="checkbox" name="creas" value="Fotografía"><span>Fotografía</span></label>
+          <label><input type="checkbox" name="creas" value="Música"><span>Música</span></label>
+          <label><input type="checkbox" name="creas" value="Video y audiovisual"><span>Video y audiovisual</span></label>
+          <label><input type="checkbox" name="creas" value="Contenido y redes"><span>Contenido y redes</span></label>
+          <label><input type="checkbox" name="creas" value="Arte y manualidades"><span>Arte y manualidades</span></label>
+          <label><input type="checkbox" name="creas" value="Moda"><span>Moda</span></label>
+          <label><input type="checkbox" name="creas" value="Algo más"><span>Algo más</span></label>
+        </div></div>
+
+      <div class="campo"><span class="lbl">¿Qué te gustaría encontrar en El Refugio?</span>
+        <div class="chips">
+          <label><input type="radio" name="encontrar" value="Clases para aprender a mi ritmo"><span>Clases para aprender a mi ritmo</span></label>
+          <label><input type="radio" name="encontrar" value="Una comunidad que me acompañe mientras construyo"><span>Una comunidad que me acompañe mientras construyo</span></label>
+          <label><input type="radio" name="encontrar" value="Todavía no lo sé"><span>Todavía no lo sé</span></label>
+        </div></div>
+
+      <div class="campo"><label for="f-proyecto">¿Qué idea o proyecto te gustaría materializar? <span class="opc">(opcional)</span></label>
+        <textarea id="f-proyecto" name="proyecto" placeholder="No tiene que estar clara todavía. Cuéntanos lo que tengas."></textarea></div>
+
+      <div class="campo"><span class="lbl">¿Cómo conociste El Refugio?</span>
+        <div class="chips">
+          <label><input type="radio" name="conociste" value="Por el Instagram de Anateresa"><span>Por el Instagram de Anateresa</span></label>
+          <label><input type="radio" name="conociste" value="Me lo recomendó alguien"><span>Me lo recomendó alguien</span></label>
+          <label><input type="radio" name="conociste" value="En un evento o taller"><span>En un evento o taller</span></label>
+          <label><input type="radio" name="conociste" value="Por otra vía"><span>Por otra vía</span></label>
+        </div></div>
+        </div>
+      </details>
+
+      <input class="hp" type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn btn-lila" type="submit">Unirme a la lista de espera</button>
+    </form>
+    <p class="msg" id="form-msg" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- ============ ¿CÓMO FUNCIONA? ============ -->
+<section class="bg-lila textura">
+  <div class="wrap marco">
+    <h2>¿Cómo funciona?</h2>
+    <p class="eyebrow">Cuando entras accedes a tres espacios</p>
+
+    <div class="acc">
+      <details>
+        <summary><span class="em">✍🏻</span><span class="tt"><span class="t">La biblioteca</span><span class="st">Clases grabadas para avanzar a tu ritmo</span></span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="cuerpo">
+          <video class="media" src="media/clases.mp4" poster="media/clases-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Algunas clases de la biblioteca"></video>
+          <ul>
+            <li>Clases, masterclasses, workshops, programas y plantillas</li>
+            <li>Marca personal, mindset, organización y negocios creativos</li>
+            <li>Todo grabado, disponible desde el primer día</li>
+          </ul>
+          <em>Aquí dejas de improvisar y empiezas a construir con dirección.</em>
+        </div>
+      </details>
+      <details>
+        <summary><span class="em">☕</span><span class="tt"><span class="t">Los cafecitos creativos</span><span class="st">Nuestro encuentro en vivo cada viernes</span></span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="cuerpo">
+          <img class="media ancha" src="media/cafecito.jpg" alt="Un cafecito creativo en vivo con miembros de El Refugio" loading="lazy">
+          <ul>
+            <li>Todos los viernes en vivo, el punto de encuentro de la comunidad</li>
+            <li>Clase con invitado, sesión de desbloqueo, reto creativo o planificación mensual</li>
+            <li>Si no puedes en vivo, la grabación queda en la biblioteca</li>
+          </ul>
+          <em>La rutina que semana a semana te activa y te impulsa a seguir.</em>
+        </div>
+      </details>
+      <details>
+        <summary><span class="em">🫂</span><span class="tt"><span class="t">La comunidad</span><span class="st">Tu gente, todos los días, en WhatsApp</span></span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="cuerpo">
+          <ul>
+            <li>Espacio en WhatsApp con creativos de +35 ciudades del mundo</li>
+            <li>Acompañamiento, Q&amp;A y feedback sobre tus procesos</li>
+            <li>Accountability todos los lunes</li>
+            <li>Grupos por ciudad para encontrarse en persona</li>
+          </ul>
+          <em>Aquí encuentras las conexiones, colaboraciones y oportunidades que cambian tu camino.</em>
+        </div>
+      </details>
+    </div>
+
+    <div class="cta"><a class="btn btn-crema" href="#waitlist">Es exactamente lo que necesito</a></div>
+  </div>
+</section>
+
+<!-- ============ COMUNIDAD ============ -->
+<section>
+  <div class="wrap">
+    <h2>El Refugio es un lugar donde los amigos sí se encuentran</h2>
+    <p>Esto es lo que nadie te dice sobre crear o emprender: es fácil sentirse solo. En El Refugio, rompemos con esa soledad.</p>
+    <img class="collage" src="media/comunidad.jpg" alt="Miembros de El Refugio encontrándose en persona" loading="lazy">
+    <h2 style="margin-top:64px">Aquí vienes a encontrar<br>a tu gente</h2>
+    <div class="frases">
+      <p>Gente que siente con la misma intensidad que tú.</p>
+      <p>Gente con la que puedes ser vulnerable sin que te juzguen.</p>
+      <p>Amigos que se convierten en socios, colaboradores y tu red de apoyo real.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bg-crema">
+  <div class="wrap">
+    <p class="eyebrow">En palabras de quienes ya están dentro</p>
+    <h2>Así se siente ser parte de El Refugio</h2>
+  </div>
+  <div class="carrusel">
+    <div class="testis" id="testis" tabindex="0" aria-label="Testimonios, desliza para ver más">
+      <img src="https://waitlistseptiembre.carrd.co/assets/images/image02.png" alt="Testimonio de Simón">
+      <img src="https://waitlistseptiembre.carrd.co/assets/images/image10.png" alt="Testimonio de Nana">
+      <img src="https://waitlistseptiembre.carrd.co/assets/images/image01.png" alt="Testimonio de Maga">
+    </div>
+    <div class="flechas">
+      <button type="button" data-dir="-1" aria-label="Anterior">←</button>
+      <button type="button" data-dir="1" aria-label="Siguiente">→</button>
+    </div>
+  </div>
+
+  <div class="wrap" style="margin-top:80px">
+    <h2>El Refugio ya está en +35 ciudades del mundo</h2>
+  </div>
+  <div class="mapa"><video src="media/mapa.mp4" poster="media/mapa-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Mapa de las ciudades donde está El Refugio"></video></div>
+  <div class="wrap">
+    <p style="margin-top:22px">Ilustradores, escritores, editores, diseñadores, marketers y creadores de todo tipo caminando juntos.</p>
+    <div class="cta"><a class="btn btn-lila" href="#waitlist">¡Quiero estar ahí!</a></div>
+  </div>
+</section>
+
+<!-- ============ VIDEO 1 ============ -->
+<section>
+  <div class="wide">
+    <h2>¿Qué le dirías a un creativo que está dudando si entrar a El Refugio?</h2>
+    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/azASrEWP9RE?rel=0" title="Creativo, esto es para ti" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+  </div>
+  <div class="wrap apertura" style="margin-top:56px">
+    <p class="eyebrow">Próxima apertura: <span data-fecha>1 de febrero</span><br>solo <span data-cupos>50</span> creativos podrán entrar</p>
+    <div class="cta" style="margin-top:20px"><a class="btn btn-lila" href="#waitlist">El Refugio es para mí</a></div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="bg-crema">
+  <div class="wrap">
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq">
+      <details><summary>¿Cómo puedo asegurar mi cupo?</summary><p>El 1 de febrero a las 11:00 am te llega un correo con el acceso. Pon una alarma para entrar apenas abra, porque los cupos se toman por orden de llegada.</p></details>
+      <details><summary>¿Unirme a la lista me compromete a algo?</summary><p>No. Anotarte es gratis y no te obliga a entrar. Solo te aseguras de enterarte primero y de recibir el acceso antes que nadie.</p></details>
+      <details><summary>¿Qué pasa después de que me anoto?</summary><p>Quedas en la lista y te escribimos al correo que dejaste. Revisa también la carpeta de promociones o spam para no perderte el acceso.</p></details>
+      <details><summary>¿Necesito tener un proyecto claro para entrar?</summary><p>No. Puedes llegar con una idea a medias, con muchas ideas a la vez o solo con las ganas de crear. El Refugio es justo el lugar para aterrizarlas.</p></details>
+      <details><summary>¿Tengo que ser profesional o tener experiencia?</summary><p>No. Hay creativos empezando y otros con años de camino: ilustradores, escritores, diseñadores, músicos, fotógrafos y creadores de todo tipo.</p></details>
+      <details><summary>¿Desde dónde puedo participar?</summary><p>Desde cualquier lugar del mundo. Todo pasa en línea y en español, y ya estamos en más de 35 ciudades.</p></details>
+      <details><summary>¿Es difícil participar?</summary><p>No. Al entrar recibes un video de 2 min para entender la dinámica de la comunidad, para que tengas todo claro desde el primer momento.</p></details>
+      <details><summary>¿Qué pasa si no puedo estar en los vivos?</summary><p>Todo queda grabado en la biblioteca para que lo veas a tu ritmo.</p></details>
+      <details><summary>¿Cuánto cuesta entrar?</summary><p>El 1 de febrero, en el correo de acceso, recibes todas las opciones para entrar y cómo pagar desde tu país.</p></details>
+      <details><summary>¿Realmente sólo hay <span data-cupos>50</span> cupos?</summary><p>Sí. Abrimos pocos cupos para enfocarnos al 100% en la conexión y en los proyectos de quienes ya están dentro.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEO 2 + CIERRE ============ -->
+<section style="padding-bottom:24px">
+  <div class="wide">
+    <h2>No tienes que<br>caminar solo</h2>
+    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/0d55D3_3yOw?rel=0" title="No tienes que caminar solo" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <div class="cta"><a class="btn btn-lila" href="#waitlist">Bienvenido a casa</a></div>
+  </div>
+</section>
+
+<footer>
+  <img class="firma" src="https://waitlistseptiembre.carrd.co/assets/images/image23.png" alt="Con amor, Ani">
+  <img class="casita" src="https://waitlistseptiembre.carrd.co/assets/images/image16.png" alt="">
+  <div class="redes">
+    <a href="https://www.instagram.com/anateresabarrios" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.9 1.4 1.4 0 000-2.9z"/></svg></a>
+    <a href="https://wa.me/message/UX2ET3QZ3LNDO1" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M.06 24l1.69-6.16A11.87 11.87 0 01.16 11.9C.16 5.34 5.5 0 12.06 0a11.82 11.82 0 018.41 3.49 11.82 11.82 0 013.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 01-5.69-1.45L.06 24zm6.6-3.8c1.68.99 3.28 1.59 5.39 1.59 5.45 0 9.89-4.43 9.9-9.88a9.88 9.88 0 00-9.89-9.9c-5.45 0-9.89 4.43-9.89 9.88 0 2.23.65 3.9 1.75 5.64l-1 3.65 3.74-.98zm11.39-5.47c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41z"/></svg></a>
+  </div>
+  <small>© El Refugio. Todos los derechos reservados.</small>
+</footer>
+
+<script>
+{
+/* =========================================================
+   CONFIGURACIÓN — lo único que hay que tocar
+   ========================================================= */
+const CONFIG = {
+  fecha: "1 de febrero",
+  cupos: "50",
+  googleSheetsUrl: "https://script.google.com/macros/s/AKfycbwXQXuuLAHdy8Dsfuna-7STwLn85rvMT_1zqPTZR7MWMyDP65CT1H1UHOgtQ0IB7s8hHA/exec"
+};
+
+document.querySelectorAll("[data-fecha]").forEach(e => e.textContent = CONFIG.fecha);
+const car = document.getElementById("testis");
+const paso = () => (car.querySelector("img")?.offsetWidth || 300) + 18;
+document.querySelectorAll(".flechas button").forEach(b => b.addEventListener("click", () => car.scrollBy({ left: paso() * +b.dataset.dir, behavior: "smooth" })));
+car.addEventListener("keydown", e => { if (e.key === "ArrowRight") car.scrollBy({ left: paso(), behavior: "smooth" }); if (e.key === "ArrowLeft") car.scrollBy({ left: -paso(), behavior: "smooth" }); });
+document.querySelectorAll("[data-cupos]").forEach(e => e.textContent = CONFIG.cupos);
+
+const form = document.getElementById("form-espera");
+const msg = document.getElementById("form-msg");
+const error = (t, el) => { msg.className = "msg err"; msg.textContent = t; if (el) el.focus(); };
+
+form.addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  msg.className = "msg"; msg.textContent = "";
+  const d = new FormData(form);
+  if (d.get("hp")) return;
+  const v = k => (d.get(k) || "").toString().trim();
+  const datos = {
+    nombre: v("nombre"), email: v("email"), whatsapp: v("whatsapp"), instagram: v("instagram"),
+    ciudad: v("ciudad"), creas: d.getAll("creas").join(", "), encontrar: v("encontrar"),
+    proyecto: v("proyecto"), conociste: v("conociste")
+  };
+  if (!datos.nombre) return error("Cuéntanos tu nombre ✨", form.nombre);
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(datos.email)) return error("Revisa tu correo, parece que falta algo.", form.email);
+  if (!datos.instagram) return error("Déjanos tu Instagram.", form.instagram);
+  if (!datos.ciudad) return error("¿Desde qué ciudad nos escribes?", form.ciudad);
+  const abrir = () => document.getElementById("extra").open = true;
+  if (!datos.creas) { abrir(); return error("Marca al menos una opción en «¿Qué creas?»."); }
+  if (!datos.encontrar) { abrir(); return error("Elige qué te gustaría encontrar en El Refugio."); }
+  if (!datos.conociste) { abrir(); return error("Cuéntanos cómo conociste El Refugio."); }
+  if (!CONFIG.googleSheetsUrl) return error("El formulario todavía no está conectado.");
+
+  const body = new URLSearchParams({
+    "Nombre": datos.nombre,
+    "Email": datos.email,
+    "WhatsApp": datos.whatsapp,
+    "Instagram": datos.instagram,
+    "Ciudad": datos.ciudad,
+    "Qué creas": datos.creas,
+    "Qué buscas": datos.encontrar,
+    "Proyecto": datos.proyecto,
+    "Cómo nos conoció": datos.conociste
+  });
+
+  const btn = form.querySelector("button");
+  btn.disabled = true; btn.textContent = "Enviando…";
+  try {
+    await fetch(CONFIG.googleSheetsUrl, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: body.toString()
+    });
+    location.href = "gracias.html?n=" + encodeURIComponent(datos.nombre);
+    form.style.display = "none";
+    msg.className = "msg ok";
+    msg.innerHTML = "<b>¡Ya estás en la lista! 🏠</b><br>Te escribiremos antes que a nadie cuando se abran las puertas.";
+    msg.scrollIntoView({ block: "center" });
+  } catch (e) {
+    error("Algo no funcionó. Inténtalo de nuevo en un momento.");
+    btn.disabled = false; btn.textContent = "Unirme a la lista de espera";
+  }
+});
+}
+</script>
+</body>
+</html>
