@@ -433,6 +433,7 @@ form.addEventListener("submit", async (ev) => {
     });
     const r = await res.json().catch(() => ({}));
     if (!res.ok || r.success === false) throw new Error(r.error || "error");
+    location.href = "gracias.html?n=" + encodeURIComponent(datos.nombre);
     form.style.display = "none";
     msg.className = "msg ok";
     msg.innerHTML = "<b>¡Ya estás en la lista! 🏠</b><br>Te escribiremos antes que a nadie cuando se abran las puertas.";

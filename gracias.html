@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estás en la lista · El Refugio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crema:#EDE7DA; --crema-claro:#F6F2EA; --lila:#98869C; --lila-osc:#76657A; --dorado:#DFC897;
+    --tinta:#2B2A27; --suave:#6E6A63; --linea:#D9D0C0;
+    --texto:"Arial Rounded MT Bold","Arial Rounded MT","Nunito",system-ui,sans-serif;
+    --titulo:"Lora",Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;min-width:0}
+  body{background:var(--crema-claro);color:var(--tinta);font:15px/1.65 var(--texto);-webkit-font-smoothing:antialiased;overflow-x:clip}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2{font-family:var(--titulo);font-weight:400;line-height:1.12;text-wrap:balance}
+  .wrap{max-width:560px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--suave)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 30px;border-radius:40px;border:0;
+       font:15px var(--texto);text-decoration:none;cursor:pointer;transition:transform .15s,background .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-lila{background:var(--lila-osc);color:var(--crema-claro)}
+  .btn-borde{background:transparent;border:1.5px solid currentColor}
+  .textura{position:relative;isolation:isolate}
+  .textura::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.35;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .3 0 0 0 0 .38 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* ---------- 1. bienvenida ---------- */
+  .entrada{background:var(--lila);color:#fff;text-align:center;padding:56px 16px 120px;min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .entrada .logo{width:84px;margin-bottom:26px;mix-blend-mode:multiply}
+  .entrada .eyebrow{color:rgba(255,255,255,.85)}
+  .entrada h1{font-size:clamp(38px,8vw,60px);margin:12px 0 14px}
+  .entrada .bajada{font-family:var(--titulo);font-style:italic;font-size:19px;opacity:.95;max-width:420px}
+
+  /* ---------- llave ---------- */
+  .pase{position:relative;width:min(360px,100%);margin:44px auto 0;background:var(--crema-claro);color:var(--tinta);border-radius:26px;
+        box-shadow:0 30px 60px -28px rgba(40,20,50,.7);padding:26px 24px 24px;text-align:center;
+        animation:llega 1.1s cubic-bezier(.2,.8,.2,1) both .2s}
+  .pase::before{content:"";position:absolute;inset:10px;border:1.5px dashed var(--linea);border-radius:18px;pointer-events:none}
+  .pase .muesca{position:absolute;top:50%;width:26px;height:26px;border-radius:50%;background:var(--lila);transform:translateY(-50%)}
+  .pase .muesca.i{left:-13px}.pase .muesca.d{right:-13px}
+  .pase .etq{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--lila-osc)}
+  .pase svg.llave{width:190px;margin:14px auto 6px;display:block;transform-origin:30% 50%;animation:gira 1.4s ease-in-out 1.1s both}
+  .pase .nombre{font-family:var(--titulo);font-size:clamp(26px,6vw,32px);line-height:1.15;margin:4px 0 2px;word-break:break-word}
+  .pase .para{font-size:13px;color:var(--suave)}
+  .pase hr{border:0;border-top:1.5px dashed var(--linea);margin:18px 6px 14px}
+  .pase .fecha{font-family:var(--titulo);font-size:22px}
+  .pase .hora{font-size:13px;color:var(--suave)}
+  @keyframes llega{from{opacity:0;transform:translateY(40px) rotate(-6deg) scale(.94)}to{opacity:1;transform:none}}
+  @keyframes gira{0%{transform:rotate(0)}40%{transform:rotate(-14deg)}70%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+
+  /* ---------- cuenta regresiva ---------- */
+  .cuenta{display:flex;justify-content:center;gap:10px;margin:34px 0 6px}
+  .cuenta div{background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.35);border-radius:16px;width:74px;padding:10px 0 8px}
+  .cuenta b{display:block;font-family:var(--titulo);font-weight:400;font-size:30px;line-height:1.1;font-variant-numeric:tabular-nums}
+  .cuenta span{font-size:11px;letter-spacing:.08em;opacity:.85}
+  .acciones{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:26px}
+  .acciones .btn-cal{background:var(--crema-claro);color:var(--tinta)}
+  .acciones .btn-borde{color:#fff}
+  .nota{font-size:12.5px;opacity:.85;margin-top:14px}
+
+  /* ---------- 2. mensaje ---------- */
+  .mensaje{padding:84px 0 70px;text-align:center}
+  .mensaje h2{font-size:clamp(28px,5vw,38px);margin-bottom:18px}
+  .mensaje p{margin-bottom:14px}
+  .aviso{display:flex;gap:14px;align-items:flex-start;text-align:left;background:#fff;border:1.5px dashed var(--linea);border-radius:20px;padding:18px 20px;margin:28px 0 0}
+  .aviso .ic{flex:none;width:42px;height:42px;border-radius:50%;background:#EEE8F0;display:flex;align-items:center;justify-content:center;font-size:19px}
+  .aviso p{margin:0;font-size:14px}
+
+  /* ---------- 3. tour ---------- */
+  .tour{background:var(--crema);padding:84px 0;text-align:center}
+  .tour h2{font-size:clamp(28px,5vw,38px);margin:10px 0 12px}
+  .tour .wide{max-width:820px;margin:0 auto;padding:0 24px}
+  .video{position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;margin-top:30px;background:#000;box-shadow:0 24px 50px -30px rgba(40,20,50,.6)}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .credito{font-size:13px;color:var(--suave);margin-top:14px}
+
+  /* ---------- 4. mientras tanto ---------- */
+  .mientras{padding:84px 0 40px;text-align:center}
+  .mientras h2{font-size:clamp(26px,5vw,34px);margin-bottom:26px}
+  .tarjeta{display:flex;gap:16px;align-items:center;text-align:left;background:#fff;border-radius:22px;padding:18px 20px;margin-bottom:14px;text-decoration:none;
+           box-shadow:0 10px 24px -18px rgba(50,30,60,.5);transition:transform .2s}
+  .tarjeta:hover{transform:translateY(-2px)}
+  .tarjeta .ic{flex:none;width:48px;height:48px;border-radius:50%;background:#EEE8F0;display:flex;align-items:center;justify-content:center;font-size:21px}
+  .tarjeta b{font-family:var(--titulo);font-weight:400;font-size:19px;display:block}
+  .tarjeta span{font-size:13px;color:var(--suave)}
+  .tarjeta .fl{margin-left:auto;font-size:20px;color:var(--lila-osc)}
+
+  .firma{padding:40px 0 60px;text-align:center}
+  .firma p{font-family:var(--titulo);font-size:22px;font-style:italic}
+  .firma img{width:160px;margin:14px auto 0}
+
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ============ 1. BIENVENIDA + LLAVE ============ -->
+<section class="entrada textura">
+  <img class="logo" src="https://waitlistseptiembre.carrd.co/assets/images/image07.png" alt="El Refugio">
+  <p class="eyebrow">Confirmado</p>
+  <h1>Estás en la lista 🏠</h1>
+  <p class="bajada">Tomaste la decisión, y eso ya dice mucho de ti 🤍</p>
+
+  <div class="pase" id="pase">
+    <span class="muesca i"></span><span class="muesca d"></span>
+    <p class="etq">Llave de El Refugio</p>
+    <svg class="llave" viewBox="0 0 240 90" aria-hidden="true">
+      <g stroke="#2B2A27" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="70" y="38" width="152" height="14" rx="4" fill="#DFC897"/>
+        <path d="M188 52 v16 h10 v-10 h8 v14 h12 V52" fill="#DFC897"/>
+        <circle cx="45" cy="45" r="30" fill="#DFC897"/>
+        <circle cx="45" cy="45" r="11" fill="#F6F2EA"/>
+        <path d="M100 38 v14 M112 38 v14" stroke-width="2" fill="none"/>
+      </g>
+    </svg>
+    <p class="para">para</p>
+    <p class="nombre" id="nombre">ti</p>
+    <hr>
+    <p class="fecha">1 de febrero</p>
+    <p class="hora">11:00 am, hora de Caracas<span id="hora-local"></span></p>
+  </div>
+
+  <div class="cuenta" id="cuenta" aria-label="Tiempo para la apertura">
+    <div><b id="c-d">--</b><span>días</span></div>
+    <div><b id="c-h">--</b><span>horas</span></div>
+    <div><b id="c-m">--</b><span>min</span></div>
+    <div><b id="c-s">--</b><span>seg</span></div>
+  </div>
+
+  <div class="acciones">
+    <a class="btn btn-cal" id="gcal" target="_blank" rel="noopener">📅 Guardar en Google Calendar</a>
+    <button class="btn btn-borde" id="descargar" type="button">Descargar mi llave</button>
+  </div>
+  <p class="nota">Guarda la fecha y pon una alarma: los cupos son solo para <b>50 creativos</b>.</p>
+</section>
+
+<!-- ============ 2. MENSAJE ============ -->
+<section class="mensaje">
+  <div class="wrap">
+    <p class="eyebrow">El 1 de febrero</p>
+    <h2>Se abren las puertas de El Refugio solo para 50 personas</h2>
+    <p>Y por estar aquí, tendrás acceso antes que nadie.</p>
+    <div class="aviso">
+      <span class="ic">🔑</span>
+      <p>Ese día, a las <b>11:00 am</b>, te llega a tu correo el acceso para entrar. Revisa también promociones o spam para que no se te pierda.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. TOUR ============ -->
+<section class="tour">
+  <div class="wide">
+    <p class="eyebrow">Mientras esperas, pasa adelante</p>
+    <h2>Un tour por El Refugio</h2>
+    <p>Recorre cada habitación de la casa en este cortometraje, creado por Simón, uno de nuestros miembros.</p>
+    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/vu7NCetWn8Y?rel=0" title="Un tour por El Refugio, cortometraje de Simón" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <p class="credito">Cortometraje hecho por Simón, miembro de El Refugio 🤍</p>
+  </div>
+</section>
+
+<!-- ============ 4. MIENTRAS TANTO ============ -->
+<section class="mientras">
+  <div class="wrap">
+    <h2>Mientras tanto, mantente cerca</h2>
+    <a class="tarjeta" href="https://www.instagram.com/anateresabarrios" target="_blank" rel="noopener">
+      <span class="ic">💌</span>
+      <span><b>Escríbeme en Instagram</b><span>Sígueme en @anateresabarrios y cuéntame por DM que ya estás en la lista. ¡Quiero conocerte!</span></span>
+      <span class="fl">→</span>
+    </a>
+    <a class="tarjeta" href="#" id="compartir">
+      <span class="ic">🗝</span>
+      <span><b>Comparte tu llave</b><span>Descárgala, súbela a tus historias y etiquétame. Quizás alguien más necesita este refugio.</span></span>
+      <span class="fl">→</span>
+    </a>
+  </div>
+</section>
+
+<section class="firma">
+  <p>Nos vemos adentro.</p>
+  <img src="https://waitlistseptiembre.carrd.co/assets/images/image23.png" alt="Con amor, Ani">
+</section>
+
+<canvas id="lienzo" width="1080" height="1920" hidden></canvas>
+
+<script>
+{
+  const APERTURA = new Date("2027-02-01T11:00:00-04:00"); // 11:00 am Caracas
+  const params = new URLSearchParams(location.search);
+  const nombreCompleto = (params.get("n") || "").trim().slice(0, 40);
+  const nombre = nombreCompleto.split(/\s+/)[0] || "";
+  document.getElementById("nombre").textContent = nombre || "ti";
+
+  // hora local si es distinta a Caracas
+  try {
+    const local = APERTURA.toLocaleTimeString("es", { hour: "numeric", minute: "2-digit" });
+    const offCaracas = -240, offLocal = -new Date(APERTURA).getTimezoneOffset();
+    if (offLocal !== offCaracas) document.getElementById("hora-local").textContent = ` · ${local} en tu hora`;
+  } catch (e) {}
+
+  // cuenta regresiva
+  const pad = n => String(n).padStart(2, "0");
+  const tic = () => {
+    let t = Math.max(0, APERTURA - Date.now()) / 1000;
+    const d = Math.floor(t / 86400); t -= d * 86400;
+    const h = Math.floor(t / 3600); t -= h * 3600;
+    const m = Math.floor(t / 60); const s = Math.floor(t - m * 60);
+    document.getElementById("c-d").textContent = d;
+    document.getElementById("c-h").textContent = pad(h);
+    document.getElementById("c-m").textContent = pad(m);
+    document.getElementById("c-s").textContent = pad(s);
+  };
+  tic(); setInterval(tic, 1000);
+
+  // Google Calendar
+  const gcal = new URL("https://calendar.google.com/calendar/render");
+  gcal.searchParams.set("action", "TEMPLATE");
+  gcal.searchParams.set("text", "🏠 Se abren las puertas de El Refugio");
+  gcal.searchParams.set("dates", "20270201T150000Z/20270201T160000Z");
+  gcal.searchParams.set("details", "Hoy a las 11:00 am (hora de Caracas) te llega a tu correo el acceso para entrar a El Refugio. Solo hay 50 cupos: entra apenas llegue el correo.\n\nVamos ekipo 🏠");
+  gcal.searchParams.set("ctz", "America/Caracas");
+  document.getElementById("gcal").href = gcal.toString();
+
+  // Llave descargable para historias (1080x1920)
+  const dibujar = async () => {
+    await document.fonts.ready;
+    const c = document.getElementById("lienzo"), x = c.getContext("2d");
+    x.fillStyle = "#98869C"; x.fillRect(0, 0, 1080, 1920);
+    x.strokeStyle = "rgba(255,255,255,.55)"; x.setLineDash([14, 12]); x.lineWidth = 3;
+    x.beginPath(); x.roundRect(50, 50, 980, 1820, 60); x.stroke(); x.setLineDash([]);
+    x.textAlign = "center"; x.fillStyle = "#fff";
+    x.font = "28px 'Arial Rounded MT Bold', Nunito, sans-serif";
+    x.fillText("C O N F I R M A D O", 540, 250);
+    x.font = "92px Lora, serif"; x.fillText("Estoy en la lista", 540, 380);
+    // pase
+    x.fillStyle = "#F6F2EA"; x.beginPath(); x.roundRect(170, 500, 740, 940, 56); x.fill();
+    x.fillStyle = "#98869C"; [[170, 970], [910, 970]].forEach(([a, b]) => { x.beginPath(); x.arc(a, b, 40, 0, Math.PI * 2); x.fill(); });
+    x.strokeStyle = "#D9D0C0"; x.setLineDash([12, 10]); x.lineWidth = 3;
+    x.beginPath(); x.roundRect(195, 525, 690, 890, 40); x.stroke();
+    x.beginPath(); x.moveTo(230, 1160); x.lineTo(850, 1160); x.stroke(); x.setLineDash([]);
+    x.fillStyle = "#76657A"; x.font = "26px 'Arial Rounded MT Bold', Nunito, sans-serif";
+    x.fillText("L L A V E   D E   E L   R E F U G I O", 540, 620);
+    // llave
+    const svg = document.querySelector("svg.llave").outerHTML.replace("<svg", '<svg xmlns="http://www.w3.org/2000/svg" width="480" height="180"');
+    const img = new Image();
+    await new Promise(r => { img.onload = r; img.onerror = r; img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg); });
+    x.drawImage(img, 300, 680, 480, 180);
+    x.fillStyle = "#6E6A63"; x.font = "30px 'Arial Rounded MT Bold', Nunito, sans-serif"; x.fillText("para", 540, 960);
+    x.fillStyle = "#2B2A27"; x.font = "84px Lora, serif"; x.fillText(nombre || "mí", 540, 1060);
+    x.font = "64px Lora, serif"; x.fillText("1 de febrero", 540, 1270);
+    x.fillStyle = "#6E6A63"; x.font = "30px 'Arial Rounded MT Bold', Nunito, sans-serif"; x.fillText("se abren las puertas", 540, 1330);
+    x.fillStyle = "#fff"; x.font = "italic 52px Lora, serif"; x.fillText("Vamos ekipo 🏠", 540, 1620);
+    x.font = "32px 'Arial Rounded MT Bold', Nunito, sans-serif"; x.fillText("@anateresabarrios", 540, 1700);
+    return c;
+  };
+  const descargar = async (ev) => {
+    ev.preventDefault();
+    const c = await dibujar();
+    c.toBlob(async b => {
+      const archivo = new File([b], "mi-llave-el-refugio.png", { type: "image/png" });
+      if (navigator.canShare && navigator.canShare({ files: [archivo] })) {
+        try { await navigator.share({ files: [archivo], title: "Mi llave de El Refugio" }); return; } catch (e) {}
+      }
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(b); a.download = "mi-llave-el-refugio.png"; a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    }, "image/png");
+  };
+  document.getElementById("descargar").addEventListener("click", descargar);
+  document.getElementById("compartir").addEventListener("click", descargar);
+}
+</script>
+</body>
+</html>
