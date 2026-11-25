@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --crema:#EDE7DA; --crema-claro:#F6F2EA; --papel-puerta:#F4EFE6;
+    --crema:#EDE7DA; --crema-claro:#F6F2EA;
     --lila:#9B8A9E; --lila-osc:#76657A;
     --tinta:#1E1D1B; --suave:#4A4742; --linea:#D9D0C0;
     --texto:"Arial Rounded MT Bold","Arial Rounded MT","Nunito",system-ui,sans-serif;
@@ -38,65 +38,24 @@
   }
 
   .entrada .logo{width:80px;margin:0 auto 22px;mix-blend-mode:multiply}
-  .entrada h1{color:var(--tinta);font-size:clamp(40px,8vw,58px);margin-bottom:12px}
-  .entrada .felicidades-sub{font-family:var(--black);font-weight:900;font-size:clamp(16px,3.6vw,19px);color:var(--tinta);max-width:440px;margin:0 auto}
-
-  /* ---------- tarjeta personalizada ---------- */
-  .collage{
-    position:relative;
-    width:min(360px,100%);
-    margin:30px auto 0;
-    padding:20px 18px 18px;
-    border-radius:10px;
-    background:var(--papel-puerta);
-    color:var(--tinta);
-    box-shadow:0 28px 56px -24px rgba(30,16,40,.35);
-    display:flex;flex-direction:column;align-items:center;gap:14px;
-    text-align:center;
-    animation:llega .95s cubic-bezier(.2,.8,.2,1) both .15s;
-  }
-  .nombre-puerta{
+  .entrada h1{color:var(--tinta);font-size:clamp(36px,7.5vw,54px);margin-bottom:16px}
+  .entrada .nos-vemos{
     font-family:var(--black);font-weight:900;
-    font-size:13px;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--tinta);
-    padding:5px 14px;border-radius:999px;
-    background:rgba(155,138,158,.18);
-    max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+    font-size:clamp(15px,3.4vw,18px);color:var(--tinta);
+    max-width:460px;margin:0 auto;
   }
-  .collage img.imagen-puerta{
-    width:100%;
-    border-radius:6px;
-    display:block;
-  }
-  @keyframes llega{from{opacity:0;transform:translateY(28px) scale(.97)}to{opacity:1;transform:none}}
 
-  /* ---------- bloque morado: cuenta regresiva + calendario ---------- */
-  .morado-box{
-    position:relative;isolation:isolate;
-    margin:36px auto 0;max-width:480px;
-    background-color:var(--lila);
-    background-image:url("media/fondo-morado.jpg.png");
-    background-size:cover;
-    background-position:center;
-    color:#fff;
-    border-radius:28px;
-    padding:30px 22px 28px;
-    box-shadow:0 20px 40px -22px rgba(45,25,55,.65);
-  }
-  .morado-box .nos-vemos{
-    font-family:var(--black);font-weight:900;
-    font-size:clamp(15px,3.4vw,18px);color:#fff;
-    max-width:420px;margin:0 auto;
-  }
+  /* ---------- cuenta regresiva ---------- */
   .cuenta{
     display:grid;grid-template-columns:repeat(4,minmax(64px,98px));
-    justify-content:center;gap:10px;margin:18px auto 8px;
+    justify-content:center;gap:10px;margin:20px auto 8px;max-width:440px;
   }
   .cuenta div{
     background:rgba(246,242,234,.95);
+    border:1.5px solid var(--linea);
     border-radius:18px;
     padding:12px 6px 10px;
-    box-shadow:0 12px 24px -14px rgba(25,18,30,.55);
+    box-shadow:0 12px 24px -14px rgba(25,18,30,.35);
   }
   .cuenta b{
     display:block;font-family:var(--titulo);font-weight:500;
@@ -108,14 +67,22 @@
     font-family:var(--black);font-weight:900;font-size:11px;
     letter-spacing:.12em;text-transform:uppercase;color:var(--tinta);opacity:.8;
   }
-  .hora-nota{font-size:12.5px;color:#fff;opacity:.92;min-height:1.2em;margin-top:6px}
+  .hora-nota{font-size:12.5px;color:var(--tinta);opacity:.85;min-height:1.2em;margin-top:6px}
 
-  .calendario-inner{
-    margin-top:24px;
-    padding-top:22px;
-    border-top:1.5px dashed rgba(255,255,255,.45);
+  /* ---------- tarjeta morada con google calendar ---------- */
+  .morado-box{
+    position:relative;isolation:isolate;
+    margin:32px auto 0;max-width:480px;
+    background-color:var(--lila);
+    background-image:url("media/fondo-morado.jpg.png");
+    background-size:cover;
+    background-position:center;
+    color:#fff;
+    border-radius:28px;
+    padding:28px 22px;
+    box-shadow:0 20px 40px -22px rgba(45,25,55,.65);
   }
-  .calendario-inner .titulo-cal{
+  .morado-box .titulo-cal{
     font-family:var(--black);font-weight:900;
     font-size:clamp(19px,4.5vw,23px);line-height:1.25;
     color:#fff;margin-bottom:18px;
@@ -140,32 +107,24 @@
 </head>
 <body>
 
-<!-- ============ 1. BIENVENIDA + TARJETA + BLOQUE MORADO ============ -->
+<!-- ============ 1. BIENVENIDA + CUENTA REGRESIVA + CALENDARIO ============ -->
 <section class="entrada">
   <img class="logo" src="https://waitlistseptiembre.carrd.co/assets/images/image07.png" alt="El Refugio">
-  <h1>Felicidades!</h1>
-  <p class="felicidades-sub">Tomaste la decisión, y eso ya dice mucho de ti 🤍</p>
+  <h1 id="titulo-felicidades">Felicidades!</h1>
 
-  <div class="collage" id="collage">
-    <div class="nombre-puerta" id="nombre-puerta">TU NOMBRE</div>
-    <img class="imagen-puerta" src="media/puerta.jpg.png" alt="Nadie se arrepiente de ser valiente · El Refugio">
+  <p class="nos-vemos">Estás en la lista · Tomaste la decisión, y eso ya dice mucho de ti, nos vemos en:</p>
+  <div class="cuenta" id="cuenta" aria-label="Tiempo para la apertura">
+    <div><b id="c-d">--</b><span>días</span></div>
+    <div><b id="c-h">--</b><span>horas</span></div>
+    <div><b id="c-m">--</b><span>min</span></div>
+    <div><b id="c-s">--</b><span>seg</span></div>
   </div>
+  <p class="hora-nota"><span id="hora-local"></span></p>
 
   <div class="morado-box">
-    <p class="nos-vemos">Estás en la lista · Tomaste la decisión, y eso ya dice mucho de ti, nos vemos en:</p>
-    <div class="cuenta" id="cuenta" aria-label="Tiempo para la apertura">
-      <div><b id="c-d">--</b><span>días</span></div>
-      <div><b id="c-h">--</b><span>horas</span></div>
-      <div><b id="c-m">--</b><span>min</span></div>
-      <div><b id="c-s">--</b><span>seg</span></div>
-    </div>
-    <p class="hora-nota"><span id="hora-local"></span></p>
-
-    <div class="calendario-inner">
-      <p class="titulo-cal">¡Guarda la fecha en tu calendario! Solo los 50 primeros podrán entrar</p>
-      <div class="acciones">
-        <a class="btn btn-cal" id="gcal" target="_blank" rel="noopener">📅 Guardar en Google Calendar</a>
-      </div>
+    <p class="titulo-cal">¡Guarda la fecha en tu calendario! Solo los 50 primeros podrán entrar</p>
+    <div class="acciones">
+      <a class="btn btn-cal" id="gcal" target="_blank" rel="noopener">📅 Guardar en Google Calendar</a>
     </div>
   </div>
 </section>
@@ -191,9 +150,14 @@
   const APERTURA = new Date("2027-02-01T11:00:00-04:00"); // 11:00 am Caracas
   const params = new URLSearchParams(location.search);
   const nombreCompleto = (params.get("n") || "").trim().slice(0, 40);
-  const nombre = (nombreCompleto.split(/\s+/)[0] || "CREATIVO").toUpperCase();
+  const primerNombre = nombreCompleto.split(/\s+/)[0] || "";
+  const nombreFormateado = primerNombre
+    ? primerNombre.charAt(0).toUpperCase() + primerNombre.slice(1).toLowerCase()
+    : "";
 
-  document.getElementById("nombre-puerta").textContent = nombre;
+  document.getElementById("titulo-felicidades").textContent = nombreFormateado
+    ? `${nombreFormateado}, felicidades!`
+    : "Felicidades!";
 
   // hora local si es distinta a Caracas
   try {
