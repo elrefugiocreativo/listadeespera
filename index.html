@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Creativo, esto es para ti · El Refugio</title>
+<meta name="description" content="Únete a la lista de espera de El Refugio: un lugar seguro para materializar tus ideas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crema:#F5EFE1; --crema2:#F2ECDF; --crema3:#FCFAF5;
+    --lila:#79667D; --lila-claro:#A898AB; --tinta:#262521;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--crema);color:var(--tinta);font-family:Montserrat,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;height:auto;display:block}
+  .cards>*,.testis>*,.precios>*,.dos>*{min-width:0}
+  .cards img,.testis img{width:100%}
+  a{color:inherit}
+  .wrap{max-width:560px;margin:0 auto;padding:0 24px}
+  .wide{max-width:900px;margin:0 auto;padding:0 24px}
+  section{padding:96px 0;text-align:center}
+  h1,h2{font-family:Lora,serif;font-weight:400;line-height:1.15;letter-spacing:-0.01em}
+  h2{font-size:clamp(30px,5vw,42px);margin-bottom:28px}
+  h3{font-family:Lora,serif;font-weight:400;font-size:clamp(26px,4vw,33px);line-height:1.2;margin-bottom:22px}
+  .caps{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;line-height:1.9}
+  .italic{font-style:italic;font-size:15px}
+  .dot{font-size:20px;line-height:1;margin:0 0 24px;opacity:.5}
+  .stroke{display:block;width:100%;max-width:360px;height:auto;margin:36px auto}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 48px;border-radius:40px;border:0;
+       font:600 14px Montserrat,sans-serif;text-decoration:none;cursor:pointer;transition:transform .15s,box-shadow .15s;
+       box-shadow:0 6px 18px rgba(0,0,0,.12)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.16)}
+  .btn-lila{background:var(--lila);color:var(--crema2)}
+  .btn-crema{background:var(--crema2);color:var(--tinta)}
+  .cta{margin-top:44px}
+  .lista{display:inline-block;text-align:left;font-weight:600;font-size:14px;line-height:1.85;margin:8px 0 26px}
+  .lista li{list-style:none}
+  .lista li::before{content:"- "}
+
+  /* fondos */
+  .bg-bosque{background:#F2ECDF url("https://waitlistseptiembre.carrd.co/assets/images/container05.jpg") center/cover}
+  .bg-lila{background:#A898AB url("https://waitlistseptiembre.carrd.co/assets/images/container01.jpg") center/cover}
+  .bg-lila2{background:#A898AB url("https://waitlistseptiembre.carrd.co/assets/images/container06.jpg") center/cover}
+  .bg-letra{background:#F2ECDF url("https://waitlistseptiembre.carrd.co/assets/images/container04.jpg") center/cover}
+  .bg-crema3{background:var(--crema3)}
+
+  /* hero */
+  .hero{padding:72px 0 88px}
+  .hero .logo{width:120px;margin:0 auto 40px}
+  .hero h1{color:var(--lila);font-size:clamp(40px,7vw,56px);margin:26px 0 30px}
+  .hero .sub{margin-bottom:36px}
+  form.eo{max-width:360px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  form.eo input{height:48px;border-radius:40px;border:1.5px solid var(--lila);background:transparent;padding:0 20px;
+       font:500 14px Montserrat,sans-serif;color:var(--tinta);outline:none}
+  form.eo input::placeholder{color:#9C8AA0}
+  form.eo input:focus{border-color:var(--tinta)}
+  form.eo .btn{margin-top:6px;width:100%}
+  form.eo .hp{position:absolute;left:-9999px}
+  .msg{max-width:380px;margin:18px auto 0;font-size:14px;font-weight:500;min-height:1em}
+  .msg.ok{color:var(--lila);font-size:16px}
+  .msg.err{color:#952A24}
+  .hero .cierre{margin-top:56px;font-family:Lora,serif;font-size:19px;line-height:1.5}
+
+  /* historia */
+  .historia p.frase{font-size:15px;max-width:440px;margin:0 auto}
+  .historia h2{margin-bottom:44px}
+  .talento h3{max-width:520px;margin:18px auto 0}
+
+  /* por eso */
+  .poreso .casita{width:120px;margin:28px auto}
+  .dos{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin:48px 0 40px;text-align:center}
+  .dos h3{margin-bottom:14px}
+  @media(max-width:640px){.dos{grid-template-columns:1fr}}
+
+  /* como funciona */
+  .espacio{margin-top:64px}
+  .espacio .emoji{font-size:34px;margin-bottom:16px}
+
+  /* amigos */
+  .amigos .frases p{font-family:Lora,serif;font-size:20px;margin:0 0 14px}
+  .testis{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:36px 0 0}
+  @media(max-width:640px){.testis{grid-template-columns:1fr;max-width:340px;margin-left:auto;margin-right:auto}}
+  .mapa{margin:28px auto 0;border-radius:14px}
+
+  /* accesos */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+  .cards img{border-radius:10px}
+  .card-html{background:#fff;border-radius:10px;padding:28px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:712/661}
+  .card-html .ico{font-size:34px;margin-bottom:12px}
+  .card-html b{font-size:12px;letter-spacing:.14em;text-transform:uppercase;line-height:1.5;margin-bottom:8px}
+  .card-html span{font-size:12px;line-height:1.5}
+  @media(max-width:700px){.cards{grid-template-columns:1fr 1fr}}
+
+  /* precios */
+  .precios{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px;text-align:left}
+  @media(max-width:900px){.precios{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.precios{grid-template-columns:1fr}}
+  .plan{background:#9C8AA0;color:#fff;border-radius:16px;padding:28px 22px;display:flex;flex-direction:column}
+  .plan.destacado{background:#E9D98F;color:var(--tinta)}
+  .plan .tag{align-self:center;background:var(--lila);color:#fff;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin:-40px 0 14px}
+  .plan .nombre{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-align:center}
+  .plan .precio{white-space:nowrap;font-family:Lora,serif;font-size:clamp(32px,3.2vw,42px);text-align:center;margin:10px 0 18px;line-height:1}
+  .plan .precio small{font-family:Montserrat;font-size:11px;letter-spacing:.08em}
+  .plan ul{list-style:none;font-size:12px;font-weight:600;line-height:1.5;flex:1}
+  .plan li{padding-left:22px;position:relative;margin-bottom:10px}
+  .plan li::before{content:"✓";position:absolute;left:0;top:0;width:15px;height:15px;border-radius:50%;background:rgba(255,255,255,.9);color:var(--lila);font-size:10px;display:flex;align-items:center;justify-content:center}
+  .plan .pago{font-size:11px;line-height:1.5;margin-top:16px;padding-top:14px;border-top:1px dashed currentColor;opacity:.9}
+  .apertura{margin-top:60px}
+
+  /* video */
+  .video{position:relative;width:100%;aspect-ratio:16/9;border-radius:6px;overflow:hidden;margin:44px 0 0;background:#000}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+  /* letra pequeña */
+  .letra .lupa{width:110px;margin:22px auto}
+  .letra h3{max-width:520px;margin:44px auto 0}
+  .letra .bienvenido{font-family:Lora,serif;font-style:italic;font-size:26px;margin-top:10px}
+
+  /* opciones */
+  .opciones{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:34px 0 30px}
+  .opciones div{font-family:Lora,serif;font-size:20px;line-height:1.35}
+  .opciones .n{font-size:48px;color:var(--lila);display:block}
+  @media(max-width:560px){.opciones{grid-template-columns:1fr}}
+
+  /* faq */
+  .faq{text-align:left;max-width:640px;margin:0 auto}
+  .faq details{border-bottom:1.5px solid #D8CFBD;padding:18px 4px}
+  .faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;font-weight:600;font-size:15px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"↓";transition:transform .2s}
+  .faq details[open] summary::after{transform:rotate(180deg)}
+  .faq p{margin-top:12px;font-size:14px}
+
+  footer{padding:60px 0 50px;text-align:center}
+  footer .firma{width:175px;margin:0 auto 18px}
+  footer .casita{width:140px;margin:0 auto 30px}
+  .redes{display:flex;gap:22px;justify-content:center;margin-bottom:26px}
+  .redes a{width:40px;height:40px;border-radius:50%;background:var(--lila);color:var(--crema2);display:flex;align-items:center;justify-content:center}
+  .redes svg{width:18px;height:18px;fill:currentColor}
+  footer small{font-size:12px;opacity:.7}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO + FORMULARIO ============ -->
+<section class="hero" id="waitlist">
+  <div class="wrap">
+    <img class="logo" src="https://waitlistseptiembre.carrd.co/assets/images/image07.png" alt="El Refugio">
+    <p>Por fin, un lugar seguro para <b>materializar tus ideas</b></p>
+    <h1>Únete a la lista<br>de espera</h1>
+    <p class="caps">Para tener acceso exclusivo a los únicos <span data-cupos>50</span> cupos</p>
+    <p class="sub">que estarán disponibles el <b data-fecha>XX de febrero</b> para entrar al universo de El Refugio:</p>
+
+    <form class="eo" id="form-espera" novalidate>
+      <input type="text" name="nombre" placeholder="Nombre" autocomplete="given-name" required>
+      <input type="text" name="instagram" placeholder="Instagram" autocomplete="off">
+      <input type="email" name="email" placeholder="Email" autocomplete="email" required>
+      <input class="hp" type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn btn-lila" type="submit">Quiero estar dentro</button>
+    </form>
+    <p class="msg" id="form-msg" role="status" aria-live="polite"></p>
+
+    <p class="cierre">Únete a la comunidad donde tu sensibilidad encuentra estructura y tus sueños encuentran amigos que los impulsan.</p>
+  </div>
+</section>
+
+<!-- ============ ¿TE SUENA FAMILIAR? ============ -->
+<section class="bg-bosque historia">
+  <div class="wrap">
+    <h2>¿Te suena familiar<br>esta historia?</h2>
+    <p class="frase">Tienes el celular lleno de ideas que <b>nunca arrancan</b></p>
+    <img class="stroke" src="https://waitlistseptiembre.carrd.co/assets/images/image04.png" alt="">
+    <p class="frase">La gente te dice que eres <b>"demasiado intenso o sensible"</b>, como si fuera <b>algo malo.</b></p>
+    <img class="stroke" src="https://waitlistseptiembre.carrd.co/assets/images/image05.png" alt="">
+    <p class="frase">Cuando alguien te pregunta: <b>«¿A qué te dedicas?»</b>, te cuesta mucho responder. Aún no tienes la confianza para llamarte por lo que eres</p>
+    <img class="stroke" src="https://waitlistseptiembre.carrd.co/assets/images/image28.png" alt="">
+    <p class="frase">Compras muchos cursos que no pones en práctica porque te falta lo más importante: <b>constancia, motivación y comunidad.</b></p>
+    <img class="stroke" src="https://waitlistseptiembre.carrd.co/assets/images/image08.png" alt="">
+    <p class="frase">Te sientes <b>solo en tu camino</b>, como si nadie entendiera tus crisis ni celebrara tus pequeñas victorias.</p>
+
+    <div class="talento" style="margin-top:80px">
+      <p class="caps">No te falta talento</p>
+      <h3>Te falta estructura, acompañamiento y personas que entiendan lo que estás viviendo</h3>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POR ESO EXISTE EL REFUGIO ============ -->
+<section class="poreso">
+  <div class="wrap">
+    <p class="caps">Por eso existe El Refugio</p>
+    <img class="casita" src="https://waitlistseptiembre.carrd.co/assets/images/image12.png" alt="">
+    <p>El único espacio donde tu sensibilidad y tu producción trabajan juntas.</p>
+    <div class="dos">
+      <div>
+        <h3>Sensibilidad</h3>
+        <p>Gestionamos el bloqueo, el miedo y todo lo que sientes en el proceso creativo. Aquí sentir mucho no es un defecto, es exactamente lo que te hace increíble.</p>
+      </div>
+      <div>
+        <h3>Producción</h3>
+        <p>Metodología real, sistemas de organización y herramientas concretas para que tus proyectos dejen de vivir solo en tu cabeza y empiecen a existir en el mundo.</p>
+      </div>
+    </div>
+    <p class="caps">Las dos juntas<br>porque eso es lo que necesitas para avanzar</p>
+  </div>
+</section>
+
+<!-- ============ ¿CÓMO FUNCIONA? ============ -->
+<section class="bg-lila">
+  <div class="wrap">
+    <h2>¿Cómo funciona?</h2>
+    <p class="caps">Cuando entras a El Refugio<br><b>accedes a tres espacios exclusivos</b></p>
+
+    <div class="espacio">
+      <div class="emoji">✍🏻</div>
+      <h3>La biblioteca</h3>
+      <ul class="lista">
+        <li>Clases, masterclasses, workshops, programas y plantillas</li>
+        <li>Marca personal, mindset, organización y negocios creativos</li>
+        <li>Todo grabado, todo disponible desde el primer día</li>
+      </ul>
+      <p class="italic">Aquí dejas de improvisar y empiezas a construir con dirección.</p>
+    </div>
+
+    <div class="espacio">
+      <div class="emoji">☕</div>
+      <h3>Los cafecitos creativos</h3>
+      <p style="font-weight:600;font-size:14px;text-align:left;display:inline-block">Todos los viernes en vivo</p><br>
+      <ul class="lista">
+        <li>Punto de encuentro de la comunidad.</li>
+        <li>Clase con invitado referente, sesión de desbloqueo, reto creativo o planificación mensual</li>
+        <li>Si no puedes en vivo, la grabación queda en la biblioteca</li>
+      </ul>
+      <p class="italic">Aquí te mantienes en movimiento, la rutina que semana a semana te activa, te desbloquea y te impulsa a seguir.</p>
+    </div>
+
+    <div class="espacio">
+      <div class="emoji">🫂</div>
+      <h3>La comunidad</h3>
+      <p style="font-weight:600;font-size:14px">Espacio exclusivo en WhatsApp con creativos de +35 ciudades del mundo</p>
+      <ul class="lista">
+        <li>Acompañamiento en el día a día</li>
+        <li>Q&amp;A sobre tus procesos</li>
+        <li>Feedback especializado</li>
+        <li>Accountability todos los lunes</li>
+        <li>Grupos por ciudades para encontrarse en persona</li>
+      </ul>
+      <p class="italic">Aquí encuentras las conexiones, oportunidades, colaboraciones y networking que cambiarán la trayectoria de tu carrera.</p>
+    </div>
+
+    <div class="cta"><a class="btn btn-crema" href="#waitlist">Es exactamente lo que necesito</a></div>
+  </div>
+</section>
+
+<!-- ============ AMIGOS / CIUDADES ============ -->
+<section class="bg-lila2 amigos">
+  <div class="wide">
+    <div class="wrap" style="padding:0">
+      <h2>El Refugio es un lugar donde los amigos <b>SÍ</b> se encuentran</h2>
+      <p>Esto es lo que nadie te dice sobre crear o emprender: es fácil sentirse solo.<br>En El Refugio, rompemos con esa soledad.</p>
+      <h2 style="margin-top:64px">Aquí vienes a encontrar<br>a tu gente</h2>
+      <div class="frases">
+        <p>Gente que siente con la misma intensidad que tú.</p>
+        <p>Gente con la que puedes ser vulnerable sin que te juzguen.</p>
+        <p>Amigos que se convierten en socios, colaboradores y tu red de apoyo real.</p>
+      </div>
+    </div>
+
+    <p class="caps" style="margin-top:72px">Ellos ya viven dentro<br>(y sus proyectos también)</p>
+    <div class="testis">
+      <img src="https://waitlistseptiembre.carrd.co/assets/images/image02.png" alt="Testimonio de Simón">
+      <img src="https://waitlistseptiembre.carrd.co/assets/images/image10.png" alt="Testimonio de Nana">
+      <img src="https://waitlistseptiembre.carrd.co/assets/images/image01.png" alt="Testimonio de Maga">
+    </div>
+
+    <h2 style="margin-top:80px">El Refugio ya está en +35 ciudades del mundo</h2>
+    <img class="mapa" src="https://waitlistseptiembre.carrd.co/assets/images/image36.png" alt="Mapa de las ciudades de El Refugio">
+    <p style="margin-top:24px">Ilustradores, escritores, editores, diseñadores, marketers y creadores de todo tipo caminando juntos.</p>
+    <div class="cta"><a class="btn btn-crema" href="#waitlist">¡Quiero estar ahí!</a></div>
+  </div>
+</section>
+
+<!-- ============ A TODO ESTO ACCEDES ============ -->
+<section>
+  <div class="wide">
+    <p class="caps">A todo esto accedes</p>
+    <h2>desde el primer día</h2>
+    <div class="cards">
+      <img src="https://waitlistseptiembre.carrd.co/assets/images/image32.png" alt="Encuentro semanal en vivo">
+      <img src="https://waitlistseptiembre.carrd.co/assets/images/image27.png" alt="Contenido educativo exclusivo">
+      <img src="https://waitlistseptiembre.carrd.co/assets/images/image25.png" alt="Comunidad en WhatsApp">
+      <img src="https://waitlistseptiembre.carrd.co/assets/images/image22.png" alt="Galería de creadores">
+      <div class="card-html"><div class="ico">📰</div><b>El Refugio<br>Magazine</b><span>La publicación mensual de la comunidad: logros, momentos especiales y entrevistas a sus creativos.</span></div>
+      <img src="https://waitlistseptiembre.carrd.co/assets/images/image09.png" alt="Descuentos especiales">
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRECIOS ============ -->
+<section class="bg-crema3" id="precios">
+  <div class="wide">
+    <h2>Elige cómo<br>quieres entrar</h2>
+    <div class="precios">
+      <div class="plan">
+        <p class="nombre">Biblioteca</p>
+        <p class="precio">$15<small> / MES</small></p>
+        <ul>
+          <li>Todas las clases grabadas de la biblioteca</li>
+          <li>Aprende a tu ritmo</li>
+          <li>Sin en vivos ni comunidad de WhatsApp</li>
+        </ul>
+        <p class="pago"><b>Métodos de pago:</b><br>Tarjeta internacional, Zinli, PayPal</p>
+      </div>
+      <div class="plan">
+        <p class="nombre">Comunidad mensual</p>
+        <p class="precio">$30<small> / MES</small></p>
+        <ul>
+          <li>Acceso completo: comunidad, en vivos y biblioteca</li>
+          <li>Pago mes a mes</li>
+          <li>Cancela cuando quieras</li>
+        </ul>
+        <p class="pago"><b>Métodos de pago:</b><br>Tarjeta internacional, Zinli, PayPal</p>
+      </div>
+      <div class="plan">
+        <p class="nombre">Comunidad 3 meses</p>
+        <p class="precio">$85<small> / 3 MESES</small></p>
+        <ul>
+          <li>Acceso completo a la comunidad</li>
+          <li>Ahorras frente al plan mensual</li>
+          <li>Olvida los pagos recurrentes</li>
+        </ul>
+        <p class="pago"><b>Métodos de pago:</b><br>Bolívares, Zelle, Zinli, Binance, PayPal</p>
+      </div>
+      <div class="plan destacado">
+        <span class="tag">Recomendado</span>
+        <p class="nombre">Comunidad 6 meses</p>
+        <p class="precio">$150<small> / 6 MESES</small></p>
+        <ul>
+          <li>Acceso completo a la comunidad</li>
+          <li>Equivale a $25 al mes</li>
+          <li>Compromiso real para construir lo que quieres</li>
+        </ul>
+        <p class="pago"><b>Métodos de pago:</b><br>Bolívares, Zelle, Zinli, Binance, PayPal</p>
+      </div>
+    </div>
+
+    <div class="apertura">
+      <p class="caps">Próxima apertura: <span data-fecha-caps>XX de febrero</span><br>solo <span data-cupos>50</span> creativos podrán entrar</p>
+      <div class="cta" style="margin-top:28px"><a class="btn btn-lila" href="#waitlist">¡No me lo voy a perder!</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEO 1 ============ -->
+<section>
+  <div class="wide">
+    <h2>¿Qué le dirías a un creativo<br>que está dudando si entrar<br>a El Refugio?</h2>
+    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/azASrEWP9RE?rel=0" title="Creativo, esto es para ti" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <div class="cta"><a class="btn btn-lila" href="#waitlist">El Refugio es para mí</a></div>
+  </div>
+</section>
+
+<!-- ============ LETRA PEQUEÑA ============ -->
+<section class="bg-letra letra">
+  <div class="wrap">
+    <p class="caps">Un momento</p>
+    <h2>Leamos la letra pequeña:</h2>
+    <img class="lupa" src="https://waitlistseptiembre.carrd.co/assets/images/image20.png" alt="">
+    <p>Aunque El Refugio es mágico, esto NO es magia.<br>Nosotros ponemos el espacio, el sistema y la comunidad, pero quien tiene que moverse eres tú.</p>
+    <h3>Si buscas a alguien que haga el trabajo por ti... esto no es para ti.</h3>
+    <img class="stroke" src="https://waitlistseptiembre.carrd.co/assets/images/image35.png" alt="">
+    <h3 style="margin-top:0">Si no estás dispuesto a comprometerte con tus propios sueños... esto no es para ti.</h3>
+    <img class="stroke" src="https://waitlistseptiembre.carrd.co/assets/images/image03.png" alt="">
+    <h3 style="margin-top:0">Si quieres soluciones inmediatas sin esfuerzo real... esto no es para ti.</h3>
+    <img class="stroke" src="https://waitlistseptiembre.carrd.co/assets/images/image14.png" alt="">
+    <h3 style="margin-top:0">Si estás listo para dejar de procrastinar tu proyecto, entonces sí:</h3>
+    <p class="bienvenido">bienvenido a casa.</p>
+  </div>
+</section>
+
+<!-- ============ DOS OPCIONES + FAQ ============ -->
+<section>
+  <div class="wrap">
+    <p class="caps">Tienes dos opciones frente a ti:</p>
+    <div class="opciones">
+      <div><span class="n">1</span>Ver desde fuera cómo otros lanzan sus proyectos.</div>
+      <div><span class="n">2</span>Reservar tu lugar y asegurar que tú seas quien lance el tuyo.</div>
+    </div>
+    <p>Con El Refugio tienes el sistema<br>y la comunidad para cambiar tu año.</p>
+  </div>
+
+  <div class="wrap" style="margin-top:96px">
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq">
+      <details><summary>¿Es difícil participar?</summary><p>No. Al entrar recibes un video de 2 min para entender la dinámica de Patreon y WhatsApp.</p></details>
+      <details><summary>¿Qué pasa si no estoy en los vivos?</summary><p>Todo queda grabado en la biblioteca para que lo veas a tu ritmo.</p></details>
+      <details><summary>¿Qué diferencia hay entre la biblioteca y la comunidad?</summary><p>La biblioteca te da todas las clases grabadas para aprender a tu ritmo. La comunidad incluye la biblioteca y además los en vivo, la sala de WhatsApp, el accountability y los grupos por ciudad: es para quien quiere construir acompañado.</p></details>
+      <details><summary>¿Realmente sólo hay <span data-cupos>50</span> cupos?</summary><p>Sí. Cerramos para enfocarnos al 100% en la conexión y en los proyectos de quienes ya están dentro.</p></details>
+      <details><summary>¿Cómo pago desde Venezuela?</summary><p>Si eliges un plan mensual, puedes pagar con tarjeta internacional, Zinli o PayPal. Si eliges un pack de 3 o 6 meses, puedes pagar con Pago Móvil (bolívares), Binance, Zelle, PayPal o Zinli.</p></details>
+      <details><summary>¿Tengo que pagar todo el año?</summary><p>No. Los planes mensuales son una suscripción y puedes cancelar con un solo clic.</p></details>
+      <details><summary>¿Participar en la comunidad es obligatorio?</summary><p>Eres libre de decidir tu experiencia, pero mientras más te involucres, más cercano te sentirás.</p></details>
+      <details><summary>Política de reembolso</summary><p>Todos los pagos son una venta final dependiendo de la duración del plan que escojas.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEO 2 + CIERRE ============ -->
+<section class="bg-crema3" style="padding-bottom:40px">
+  <div class="wide">
+    <h2>No tienes que<br>caminar solo</h2>
+    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/0d55D3_3yOw?rel=0" title="No tienes que caminar solo" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <div class="cta"><a class="btn btn-lila" href="#waitlist">Bienvenido a casa</a></div>
+  </div>
+</section>
+
+<footer class="bg-crema3">
+  <img class="firma" src="https://waitlistseptiembre.carrd.co/assets/images/image23.png" alt="Con amor, El Refugio">
+  <img class="casita" src="https://waitlistseptiembre.carrd.co/assets/images/image16.png" alt="">
+  <div class="redes">
+    <a href="https://www.instagram.com/anateresabarrios" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.9 1.4 1.4 0 000-2.9z"/></svg></a>
+    <a href="https://wa.me/message/UX2ET3QZ3LNDO1" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M.06 24l1.69-6.16A11.87 11.87 0 01.16 11.9C.16 5.34 5.5 0 12.06 0a11.82 11.82 0 018.41 3.49 11.82 11.82 0 013.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 01-5.69-1.45L.06 24zm6.6-3.8c1.68.99 3.28 1.59 5.39 1.59 5.45 0 9.89-4.43 9.9-9.88a9.88 9.88 0 00-9.89-9.9c-5.45 0-9.89 4.43-9.89 9.88 0 2.23.65 3.9 1.75 5.64l-1 3.65 3.74-.98zm11.39-5.47c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41z"/></svg></a>
+  </div>
+  <small>© El Refugio. Todos los derechos reservados.</small>
+</footer>
+
+<script>
+/* =========================================================
+   CONFIGURACIÓN — lo único que hay que tocar
+   ========================================================= */
+const CONFIG = {
+  fecha: "XX de febrero",   // día de apertura
+  cupos: "50",             // número de cupos
+  // URL del formulario de EmailOctopus: copia el "src" del código de inserción
+  // (algo como https://eocampaign1.com/form/xxxxxxxx-xxxx-....js) y pégalo aquí.
+  emailOctopusForm: "",
+  // Orden de los campos en tu formulario de EmailOctopus (field_0, field_1, ...)
+  // El email siempre es field_0.
+  campos: { email: "field_0", nombre: "field_1", instagram: "field_2" }
+};
+
+document.querySelectorAll("[data-fecha]").forEach(e => e.textContent = CONFIG.fecha);
+document.querySelectorAll("[data-fecha-caps]").forEach(e => e.textContent = CONFIG.fecha);
+document.querySelectorAll("[data-cupos]").forEach(e => e.textContent = CONFIG.cupos);
+
+const form = document.getElementById("form-espera");
+const msg = document.getElementById("form-msg");
+
+form.addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  msg.className = "msg"; msg.textContent = "";
+  const d = new FormData(form);
+  if (d.get("hp")) return; // bot
+  const email = (d.get("email") || "").trim();
+  const nombre = (d.get("nombre") || "").trim();
+  const ig = (d.get("instagram") || "").trim();
+  if (!nombre) { msg.className = "msg err"; msg.textContent = "Cuéntanos tu nombre ✨"; return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.className = "msg err"; msg.textContent = "Revisa tu email, parece que falta algo."; return; }
+  if (!CONFIG.emailOctopusForm) { msg.className = "msg err"; msg.textContent = "El formulario todavía no está conectado."; return; }
+
+  const body = new URLSearchParams();
+  body.append(CONFIG.campos.email, email);
+  if (CONFIG.campos.nombre) body.append(CONFIG.campos.nombre, nombre);
+  if (CONFIG.campos.instagram) body.append(CONFIG.campos.instagram, ig);
+
+  const btn = form.querySelector("button");
+  btn.disabled = true; btn.textContent = "Enviando…";
+  try {
+    const res = await fetch(CONFIG.emailOctopusForm.replace(/\.js$/, ""), {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      body
+    });
+    const data = await res.json().catch(() => ({}));
+    if (res.ok && data.success !== false) {
+      form.style.display = "none";
+      msg.className = "msg ok";
+      msg.innerHTML = "<b>¡Ya estás en la lista! 🏠</b><br>Te escribiremos antes que a nadie cuando se abran las puertas.";
+    } else {
+      throw new Error((data && (data.error || data.message)) || "error");
+    }
+  } catch (e) {
+    msg.className = "msg err";
+    msg.textContent = "Algo no funcionó. Inténtalo de nuevo en un momento.";
+    btn.disabled = false; btn.textContent = "Quiero estar dentro";
+  }
+});
+</script>
+</body>
+</html>
