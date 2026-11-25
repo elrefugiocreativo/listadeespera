@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Nunito:wght@700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
     --crema:#EDE7DA; --crema-claro:#F6F2EA; --papel-puerta:#F4EFE6;
@@ -30,23 +30,17 @@
   .btn-lila{background:var(--lila-osc);color:#fff;box-shadow:0 12px 24px -12px rgba(45,25,55,.55)}
   .btn-borde{background:transparent;border:1.5px solid currentColor}
 
-  /* ---------- 1. entrada con fondo morado texturizado ---------- */
+  /* ---------- 1. entrada con imagen de fondo ---------- */
   .entrada{
     position:relative;isolation:isolate;
     background-color:var(--lila);
+    background-image:url("media/fondo-morado.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
     color:var(--tinta);
     text-align:center;
     padding:60px 18px 86px;
-  }
-  .entrada::before{
-    content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-    opacity:.45;mix-blend-mode:multiply;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .26 0 0 0 0 .34 0 0 0 .65 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-  .entrada::after{
-    content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-    opacity:.35;mix-blend-mode:soft-light;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.018 .035' numOctaves='3' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .85 -.15'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
   }
 
   .entrada .logo{width:80px;margin:0 auto 24px;mix-blend-mode:multiply}
@@ -79,7 +73,7 @@
   }
   .hora-nota{font-size:12.5px;color:var(--tinta);opacity:.85;min-height:1.2em;margin-top:6px}
 
-  /* ---------- tarjeta de la puerta ---------- */
+  /* ---------- tarjeta con imagen de la puerta ---------- */
   .paso{
     margin-top:42px;
     font-family:var(--black);font-weight:900;
@@ -88,24 +82,17 @@
   .collage{
     position:relative;
     width:min(360px,100%);
-    aspect-ratio:4/5.3;
     margin:18px auto 0;
-    padding:26px 24px 22px;
+    padding:20px 18px 18px;
     border-radius:10px;
     background:var(--papel-puerta);
     color:var(--tinta);
     box-shadow:0 28px 56px -24px rgba(30,16,40,.75);
-    display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+    display:flex;flex-direction:column;align-items:center;gap:14px;
     text-align:center;
     animation:llega .95s cubic-bezier(.2,.8,.2,1) both .15s;
   }
-  .collage::before{
-    content:"";position:absolute;inset:0;border-radius:10px;pointer-events:none;
-    opacity:.45;mix-blend-mode:multiply;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .3 0 0 0 0 .25 0 0 0 .45 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
   .nombre-puerta{
-    position:relative;z-index:1;
     font-family:var(--black);font-weight:900;
     font-size:13px;letter-spacing:.22em;text-transform:uppercase;
     color:var(--tinta);
@@ -113,29 +100,10 @@
     background:rgba(155,138,158,.18);
     max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
   }
-  .puerta-svg{
-    position:relative;z-index:1;
-    width:min(148px,44%);margin:6px auto 2px;
-  }
-  .puerta-svg svg{width:100%;height:auto;display:block}
-  .frase-valiente{
-    position:relative;z-index:1;
-    font-family:"Permanent Marker",cursive;
-    font-size:clamp(21px,5.2vw,27px);
-    line-height:1.12;letter-spacing:.02em;text-transform:uppercase;
-    color:#171614;
-    transform:rotate(-2.5deg);
-    margin:4px 0;
-  }
-  .frase-valiente .subrayado{
-    display:block;width:72%;height:4px;background:#171614;
-    border-radius:4px;margin:7px auto 0;transform:rotate(1deg);
-  }
-  .sello-refugio{
-    position:relative;z-index:1;
-    font-family:"Permanent Marker",cursive;
-    font-size:14px;letter-spacing:.12em;text-transform:uppercase;
-    color:#171614;margin-top:4px;
+  .collage img.imagen-puerta{
+    width:100%;
+    border-radius:6px;
+    display:block;
   }
   @keyframes llega{from{opacity:0;transform:translateY(28px) scale(.97)}to{opacity:1;transform:none}}
 
@@ -211,23 +179,7 @@
   <p class="paso">Estás a un paso de entrar:</p>
   <div class="collage" id="collage">
     <div class="nombre-puerta" id="nombre-puerta">TU NOMBRE</div>
-    <div class="puerta-svg" aria-hidden="true">
-      <svg viewBox="0 0 180 210" fill="none">
-        <rect x="42" y="16" width="96" height="178" rx="4" stroke="#171614" stroke-width="5.5" fill="#FBF8F2"/>
-        <path d="M42 16 L96 28 L96 194 L42 194 Z" fill="#F4EFE6" stroke="#171614" stroke-width="5" stroke-linejoin="round"/>
-        <rect x="53" y="34" width="14" height="56" rx="2" stroke="#171614" stroke-width="3.5" fill="none"/>
-        <rect x="73" y="38" width="14" height="52" rx="2" stroke="#171614" stroke-width="3.5" fill="none"/>
-        <rect x="53" y="102" width="14" height="72" rx="2" stroke="#171614" stroke-width="3.5" fill="none"/>
-        <rect x="73" y="102" width="14" height="72" rx="2" stroke="#171614" stroke-width="3.5" fill="none"/>
-        <rect x="96" y="28" width="42" height="166" fill="#171614"/>
-        <circle cx="88" cy="112" r="4.5" fill="#171614"/>
-      </svg>
-    </div>
-    <div class="frase-valiente">
-      Nadie se<br>arrepiente<br>de ser<br>valiente
-      <span class="subrayado"></span>
-    </div>
-    <div class="sello-refugio">EL REFUGIO.</div>
+    <img class="imagen-puerta" src="media/puerta.jpg" alt="Nadie se arrepiente de ser valiente · El Refugio">
   </div>
 
   <div class="calendario-box">
